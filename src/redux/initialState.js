@@ -6,4 +6,11 @@ export const initialState = {
       error: false,
     },
   },
+  categories: {
+    data: {},
+    loading: {
+      active: false,
+      error: false,
+    },
+  },
 };

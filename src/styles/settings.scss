@@ -1,1 +1,26 @@
-$base-size: 12px;
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bitter&display=swap');
+
+/* Colors */
+$color-main: #EF2940;
+$color-text-dark: #1e2935;
+$color-text-light: #f5f5f5;
+
+$color-background-light: #EEEFF1;
+$color-background-dark:#2B263A;
+$color-background-color: #F2EC60;
+
+$color-button-first: #EF2940;
+$color-button-first-hover: #f10420;
+$color-button-second: #F2EC60;
+$color-button-hover-second: #f3eb00;
+
+$color-success: #009432;
+$color-danger: #ff0000;
+
+/* Fonts */
+$font-header: 'Acme', sans-serif;
+$font-text: 'Bitter', serif;
+
+/* Transition */
+$transition: all 0.3s;

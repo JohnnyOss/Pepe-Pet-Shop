@@ -1,0 +1,12 @@
+@import "settings.scss";
+
+@mixin container {
+  margin: 0 auto;
+  max-width: 1180px;
+}
+
+@mixin wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
