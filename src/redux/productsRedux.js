@@ -1,5 +1,6 @@
 /* selectors */
 export const getAll = ({products}) => products.data;
+export const getCategories = ({categories}) => categories.data;
 
 /* action name creator */
 const reducerName = 'products';

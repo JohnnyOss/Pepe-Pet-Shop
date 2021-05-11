@@ -4,5 +4,105 @@
 .root {
   .container {
     @include container;
+    @include wrapper;
+    background-color: $color-background-color;
+
+    .logo {
+      margin-left: 12px;
+      padding-top: 8px;
+
+      img {
+        border-radius: 25%;
+      }
+    }
+
+    .navigation {
+      margin: auto;
+
+      ul {
+        list-style-type: none;
+        display: flex;
+
+        li {
+          margin-right: 15px;
+          position: relative;
+          font-size: 24px;
+          font-family: $font-header;
+
+          &:hover {
+            ul {
+              visibility: visible;
+              opacity: 1;
+            }
+          }
+
+          ul {
+            visibility: hidden;
+            opacity: 0;
+            transition: $transition;
+            display: block;
+            position: absolute;
+            z-index: 2;
+
+            li {
+              top: 10px;
+              left: -50px;
+              width: 160px;
+              padding: 5px;
+              background-color: $color-background-color;
+              border: 2px solid $color-main;
+              font-size: 16px;
+              font-family: $font-text;
+              transition: $transition;
+
+              &:hover {
+                background-color: $color-main;
+
+                a {
+                  color: $color-text-light;
+                }
+              }
+
+              a {
+                text-decoration: none;
+                color: $color-text-dark;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .cart {
+      margin: auto 12px;
+      padding: 5px;
+
+      .link {
+        color: $color-text-dark;
+
+        .icon{
+          font-size: 26px;
+
+          &:hover {
+            transform: scale(1.25);
+            transition: $transition;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: 695px) {
+  .root {
+    .container {
+      .logo {
+        margin: auto;
+      }
+
+      .cart {
+        margin: auto;
+      }
+    }
   }
 }
