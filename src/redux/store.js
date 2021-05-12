@@ -4,10 +4,12 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { initialState } from './initialState';
 import { reducer as productsReducer } from './productsRedux';
+import { reducer as categoriesReducer } from './categoriesRedux';
 
 // define reducers
 const reducers = {
   products: productsReducer,
+  categories: categoriesReducer,
 };
 
 // add blank reducers for initial state properties without reducers

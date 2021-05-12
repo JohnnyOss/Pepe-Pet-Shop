@@ -2,10 +2,10 @@
 @import "../../../styles/mixins.scss";
 
 .root {
+  background-color: $color-background-color;
   .container {
     @include container;
     @include wrapper;
-    background-color: $color-background-color;
 
     .logo {
       margin-left: 12px;

@@ -1,4 +1,77 @@
 @import '../../../styles/settings.scss';
+@import "../../../styles/mixins.scss";
 
-// .root {
-// }
+.root {
+  background-color: $color-background-color;
+  .container {
+    @include container;
+    padding: 20px;
+
+    .info {
+      @include wrapper;
+      margin-bottom: 20px;
+      border-bottom: 1px solid $color-main
+    }
+
+    .navigation {
+      .menu {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+          padding: 2px;
+
+          a {
+            text-decoration: none;
+            color: inherit;
+
+            &:hover {
+              color: $color-main;
+            }
+          }
+        }
+      }
+    }
+
+    .socialmedia {
+      .email {
+        padding: 5px;
+        margin-bottom: 5px;
+      }
+
+      .icon {
+        padding: 10px;
+        margin-right: 8px;
+        font-size: 40px;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        border-radius: 50%;
+        color: #ffffff;
+
+        &:hover {
+          transform: scale(1.15);
+          transition: $transition;
+        }
+      }
+
+      .facebook {
+        background-color:#1877f2;
+      }
+      .twitter {
+        background-color:#1da1f2;
+      }
+      .instagram {
+        background-color:#c32aa3;
+      }
+      .pinterest {
+        background-color:#bd081c;
+      }
+    }
+
+    .rights {
+      text-align: center;
+    }
+  }
+}

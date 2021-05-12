@@ -9,7 +9,7 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import clsx from 'clsx';
 
 import { connect } from 'react-redux';
-import { getCategories } from '../../../redux/productsRedux';
+import { getCategories } from '../../../redux/categoriesRedux';
 
 import styles from './Header.module.scss';
 
