@@ -3,7 +3,7 @@ export const initialState = {
     data: [
       {
         id: 1,
-        category: 'food',
+        category: 'Food & Treats',
         title: 'Puppy dry food',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
         price: 3,
@@ -11,7 +11,7 @@ export const initialState = {
       },
       {
         id: 2,
-        category: 'food',
+        category: 'Food & Treats',
         title: 'Wet food Westie',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
         price: 5,
@@ -19,7 +19,7 @@ export const initialState = {
       },
       {
         id: 3,
-        category: 'food',
+        category: 'Food & Treats',
         title: 'Biscuits',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
         price: 10,
@@ -27,7 +27,7 @@ export const initialState = {
       },
       {
         id: 4,
-        category: 'toy',
+        category: 'Toys',
         title: 'Rope toy',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
         price: 5,
@@ -35,7 +35,7 @@ export const initialState = {
       },
       {
         id: 5,
-        category: 'toy',
+        category: 'Toys',
         title: 'Snack ball',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
         price: 7,
@@ -43,7 +43,7 @@ export const initialState = {
       },
       {
         id: 6,
-        category: 'toy',
+        category: 'Toys',
         title: 'Squeaker Bear',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
         price: 9,
@@ -51,7 +51,7 @@ export const initialState = {
       },
       {
         id: 7,
-        category: 'bowl',
+        category: 'Bowls',
         title: 'Ceramis Bowl',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
         price: 3,
@@ -59,7 +59,7 @@ export const initialState = {
       },
       {
         id: 8,
-        category: 'bowl',
+        category: 'Bowls',
         title: 'Bowl Stand',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
         price: 4,
@@ -67,7 +67,7 @@ export const initialState = {
       },
       {
         id: 9,
-        category: 'bowl',
+        category: 'Bowls',
         title: 'Stainless bowl',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
         price: 5,
@@ -75,7 +75,7 @@ export const initialState = {
       },
       {
         id: 10,
-        category: 'bed',
+        category: 'Beds',
         title: 'Dog Den',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
         price: 20,
@@ -83,7 +83,7 @@ export const initialState = {
       },
       {
         id: 11,
-        category: 'bed',
+        category: 'Beds',
         title: 'Oval Bed',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
         price: 23,
@@ -91,7 +91,7 @@ export const initialState = {
       },
       {
         id: 12,
-        category: 'bed',
+        category: 'Beds',
         title: 'Ortopedic Bed',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
         price: 39,
@@ -99,7 +99,7 @@ export const initialState = {
       },
       {
         id: 13,
-        category: 'health',
+        category: 'Health & Wellness',
         title: 'Fruit Shampoo',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
         price: 10,
@@ -107,7 +107,7 @@ export const initialState = {
       },
       {
         id: 14,
-        category: 'health',
+        category: 'Health & Wellness',
         title: 'Peach Wipes',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
         price: 12,
@@ -115,7 +115,7 @@ export const initialState = {
       },
       {
         id: 15,
-        category: 'health',
+        category: 'Health & Wellness',
         title: 'Peach Care Spray',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
         price: 19,
@@ -123,7 +123,7 @@ export const initialState = {
       },
       {
         id: 16,
-        category: 'leashes',
+        category: 'Leashes & Collars',
         title: 'Black leash',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
         price: 5,
@@ -131,7 +131,7 @@ export const initialState = {
       },
       {
         id: 17,
-        category: 'leashes',
+        category: 'Leashes & Collars',
         title: 'Elegant Collar',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
         price: 5,
@@ -139,7 +139,7 @@ export const initialState = {
       },
       {
         id: 18,
-        category: 'leashes',
+        category: 'Leashes & Collars',
         title: 'Black Harness',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
         price: 9,
@@ -147,7 +147,7 @@ export const initialState = {
       },
       {
         id: 19,
-        category: 'accessories',
+        category: 'Accessories',
         title: 'Double-Sided Wellness Glove',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
         price: 10,
@@ -155,7 +155,7 @@ export const initialState = {
       },
       {
         id: 20,
-        category: 'accessories',
+        category: 'Accessories',
         title: 'Brush',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
         price: 11,
@@ -163,7 +163,7 @@ export const initialState = {
       },
       {
         id: 21,
-        category: 'accessories',
+        category: 'Accessories',
         title: 'Blue Dog Towel',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
         price: 20,
@@ -171,7 +171,7 @@ export const initialState = {
       },
       {
         id: 22,
-        category: 'vitamins',
+        category: 'Vitamins & Supplements',
         title: 'Joint Supplement for Dogs',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
         price: 15,
@@ -179,7 +179,7 @@ export const initialState = {
       },
       {
         id: 23,
-        category: 'vitamins',
+        category: 'Vitamins & Supplements',
         title: 'Forte Powder',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
         price: 19,
@@ -187,7 +187,7 @@ export const initialState = {
       },
       {
         id: 24,
-        category: 'vitamins',
+        category: 'Vitamins & Supplements',
         title: 'Seaweed Meal',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
         price: 22,
@@ -195,7 +195,7 @@ export const initialState = {
       },
       {
         id: 25,
-        category: 'toy',
+        category: 'Toys',
         title: 'Frisbee',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
         price: 39,
@@ -211,56 +211,56 @@ export const initialState = {
     data: [
       {
         id: 1,
-        name: 'food',
+        name: 'Food & Treats',
         title: 'Food & Treats',
         priceMin: 3,
         image: '/images/categories/food.jpg',
       },
       {
         id: 2,
-        name: 'toy',
+        name: 'Toys',
         title: 'Toys',
         priceMin: 5,
         image: '/images/categories/toy.jpg',
       },
       {
         id: 3,
-        name: 'accessories',
+        name: 'Accessories',
         title: 'Accessories',
         priceMin: 10,
         image: '/images/categories/accessories.jpg',
       },
       {
         id: 4,
-        name: 'health',
+        name: 'Health & Wellness',
         title: 'Health & Wellness',
         priceMin: 10,
         image: '/images/categories/health.jpg',
       },
       {
         id: 5,
-        name: 'leashes',
+        name: 'Leashes & Collars',
         title: 'Leashes & Collars',
         priceMin: 5,
         image: '/images/categories/leashes.jpg',
       },
       {
         id: 6,
-        name: 'bed',
+        name: 'Beds',
         title: 'Beds',
         priceMin: 20,
         image: '/images/categories/bed.jpg',
       },
       {
         id: 7,
-        name: 'bowl',
+        name: 'Bowls',
         title: 'Bowls',
         priceMin: 3,
         image: '/images/categories/bowl.jpg',
       },
       {
         id: 8,
-        name: 'vitamins',
+        name: 'Vitamins & Supplements',
         title: 'Vitamins & Supplements',
         priceMin: 15,
         image: '/images/categories/vitamins.jpg',

@@ -46,7 +46,7 @@ const Component = ({className}) => (
               </Button>
             </div>
           </div>
-          <h3>Find Us in socialmedia</h3>
+          <h3>Find us in socialmedia</h3>
           <div>
             <Link to="#">
               <FontAwesomeIcon icon={faFacebook} className={clsx(styles.icon, styles.facebook)}/>
