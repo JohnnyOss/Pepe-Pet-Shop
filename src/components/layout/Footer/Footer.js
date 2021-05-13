@@ -41,7 +41,7 @@ const Component = ({className}) => (
           <div className={styles.newsletter}>
             <input type="email" placeholder="email address" className={styles.email}/>
             <div>
-              <Button variant="contained" color="secondary">
+              <Button variant="contained" color="primary">
                 Sign up!
               </Button>
             </div>
@@ -64,7 +64,7 @@ const Component = ({className}) => (
         </div>
       </div>
       <div className={styles.rights}>
-        Ⓒ 2021 Jan Ossoliński. All Right reserved
+        Ⓒ 2021 Jan Ossoliński. All Right Reserved
       </div>
     </div>
   </div>
