@@ -8,6 +8,7 @@
 
   .categories {
     @include wrapper;
+    margin-bottom: 15px;
 
     .box {
       flex: 0 0 20%;

@@ -1,4 +1,14 @@
 @import '../../../styles/settings.scss';
+@import "../../../styles/mixins.scss";
 
-// .root {
-// }
+.root {
+  .container {
+    @include container;
+
+    .products {
+      @include wrapper;
+      justify-content: space-around;
+      margin-bottom: 15px;
+    }
+  }
+}
