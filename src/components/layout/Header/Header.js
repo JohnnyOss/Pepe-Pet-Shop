@@ -23,12 +23,15 @@ const Component = ({className, categories}) => (
       </div>
       <div className={styles.navigation}>
         <ul>
-          <li>Our products
+          <li>
+            <Link to={'/products/'} className={styles.allproducts}>
+              Our products
+            </Link>
             <ul>
               {categories.map((category, index) => (
                 <li key={index}>
                   <Link to={`/products/${category.name}`}>
-                    {category.title}
+                    {category.name}
                   </Link>
                 </li>
               ))}

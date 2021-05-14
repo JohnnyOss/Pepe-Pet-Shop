@@ -23,6 +23,11 @@
         list-style-type: none;
         display: flex;
 
+        .allproducts {
+          text-decoration: none;
+          color: $color-text-dark;
+        }
+
         li {
           margin-right: 15px;
           position: relative;

@@ -17,7 +17,7 @@ const Component = ({categories}) => (
         <div key={index} className={styles.box}>
           <img src={`../${category.image}`} title={category.name} alt={category.name} className={styles.image}></img>
           <Link to={`/products/${category.name}`} className={styles.link}>
-            {category.title}
+            {category.name}
           </Link>
         </div>
       ))}
