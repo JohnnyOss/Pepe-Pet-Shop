@@ -9,8 +9,8 @@ import { Link } from 'react-router-dom';
 
 import styles from './ProductBox.module.scss';
 
-const Component = ({ image, name, id, price, link, title }) => (
-  <div key={id} className={styles.box}>
+const Component = ({ image, name, price, link, title }) => (
+  <div className={styles.box}>
     <div className={styles.imageBox}>
       <img src={image} title={name} alt={name} className={styles.image}></img>
     </div>
@@ -25,9 +25,8 @@ const Component = ({ image, name, id, price, link, title }) => (
 );
 
 Component.propTypes = {
-  id: PropTypes.string,
   name: PropTypes.string,
-  image: PropTypes.array,
+  image: PropTypes.string,
   price: PropTypes.number,
   link: PropTypes.string,
   title: PropTypes.string,

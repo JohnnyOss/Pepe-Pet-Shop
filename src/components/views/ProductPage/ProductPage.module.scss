@@ -1,4 +1,59 @@
 @import '../../../styles/settings.scss';
+@import "../../../styles/mixins.scss";
 
-// .root {
-// }
+.root {
+  .container {
+    @include container;
+    margin: 15px auto;
+
+    .wrapper {
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+
+      .slider {
+        width: 300px;
+
+        ul {
+          padding: 0;
+        }
+      }
+
+      .information {
+        margin-left: 20px;
+        padding: 10px;
+        max-width: 600px;
+
+        h2 {
+          text-align: center;
+        }
+
+        p {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: 650px) {
+  .root {
+    .container {
+      .wrapper {
+        @include wrapper;
+
+        .slider {
+          margin: auto;
+        }
+
+        .information {
+          margin: auto;
+
+          h2 {
+            margin-top: 5px;
+          }
+        }
+      }
+    }
+  }
+}

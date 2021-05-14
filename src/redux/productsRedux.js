@@ -1,5 +1,6 @@
 /* selectors */
 export const getAll = ({products}) => products.data;
+export const getOneProduct = ({products}, id) => products.data.find(item => item.id === id);
 
 /* action name creator */
 const reducerName = 'products';

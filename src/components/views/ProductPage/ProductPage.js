@@ -1,37 +1,61 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
-import clsx from 'clsx';
+// import clsx from 'clsx';
 
-// import { connect } from 'react-redux';
-// import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
+import { connect } from 'react-redux';
+import { getOneProduct } from '../../../redux/productsRedux.js';
 
 import styles from './ProductPage.module.scss';
 
-const Component = ({className, children}) => (
-  <div className={clsx(className, styles.root)}>
-    <h2>ProductPage</h2>
-    {children}
-  </div>
-);
+class Component extends React.Component {
+  render() {
+    const { product } = this.props;
+    return (
+      <div className={styles.root}>
+        <div className={styles.container}>
+          <div className={styles.wrapper}>
+            <Carousel className={styles.slider}>
+              <div>
+                <img src={product.image[0]} alt={product.title} title={product.title}/>
+              </div>
+              <div>
+                <img src={product.image[1]} alt={product.title} title={product.title}/>
+              </div>
+              <div>
+                <img src={product.image[2]} alt={product.title} title={product.title}/>
+              </div>
+            </Carousel>
+            <div className={styles.information}>
+              <h2>{product.title}</h2>
+              <div>{product.description}</div>
+              <p>Price: <br></br>{product.price}$</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
 
 Component.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
+  product: PropTypes.object,
 };
 
-// const mapStateToProps = state => ({
-//   someProp: reduxSelector(state),
-// });
+const mapStateToProps = (state, props) => ({
+  product: getOneProduct(state, props.match.params.id),
+});
 
 // const mapDispatchToProps = dispatch => ({
 //   someAction: arg => dispatch(reduxActionCreator(arg)),
 // });
 
-// const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
+const Container = connect(mapStateToProps)(Component);
 
 export {
-  Component as ProductPage,
-  // Container as ProductPage,
+  // Component as ProductPage,
+  Container as ProductPage,
   Component as ProductPageComponent,
 };
