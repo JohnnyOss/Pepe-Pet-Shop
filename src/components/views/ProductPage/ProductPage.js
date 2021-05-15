@@ -40,11 +40,11 @@ const Component = ({product}) => {
             <div>{product.description}</div>
             <p>Price: {product.price}$</p>
             <Card className={styles.order}>
-              <h2>Order</h2>
+              <h4>Order</h4>
               <div>
-                <h3>Amount:</h3>
+                <h5>Amount:</h5>
                 <AmountWidget setAmount={setAmount}/>
-                <h3>Price: ${amount * product.price}</h3>
+                <h5>Price: ${amount * product.price}</h5>
                 <Button
                   variant="contained"
                   color="primary"

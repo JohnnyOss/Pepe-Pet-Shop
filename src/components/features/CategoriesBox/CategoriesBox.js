@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import Card from '@material-ui/core/Card';
+
 // import clsx from 'clsx';
 
 import { connect } from 'react-redux';
@@ -11,17 +13,19 @@ import styles from './CategoriesBox.module.scss';
 
 const Component = ({categories}) => (
   <div className={styles.root}>
-    <h2 className={styles.header}>Categories of our products</h2>
-    <div className={styles.categories}>
-      {categories.map((category, index) => (
-        <div key={index} className={styles.box}>
-          <img src={`../${category.image}`} title={category.name} alt={category.name} className={styles.image}></img>
-          <Link to={`/products/${category.name}`} className={styles.link}>
-            {category.name}
-          </Link>
-        </div>
-      ))}
-    </div>
+    <Card>
+      <h2 className={styles.header}>Categories of our products</h2>
+      <div className={styles.categories}>
+        {categories.map((category, index) => (
+          <div key={index} className={styles.box}>
+            <img src={`../${category.image}`} title={category.name} alt={category.name} className={styles.image}></img>
+            <Link to={`/products/${category.name}`} className={styles.link}>
+              {category.name}
+            </Link>
+          </div>
+        ))}
+      </div>
+    </Card>
   </div>
 );
 

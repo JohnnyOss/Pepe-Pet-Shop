@@ -1,4 +1,13 @@
 @import '../../../styles/settings.scss';
 
-// .root {
-// }
+.root {
+  margin: 10px auto 20px auto;
+  max-width: 1920px;
+
+  .carouselText{
+    background-color: rgba(239, 41, 64, 0.5);
+    margin: auto;
+    bottom: 5%;
+    color: $color-text-light;
+  }
+}

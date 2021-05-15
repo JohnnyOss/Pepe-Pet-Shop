@@ -4,6 +4,7 @@
 .root {
   .header {
     text-align: center;
+    padding: 15px;
   }
 
   .categories {
@@ -58,6 +59,14 @@
           color: $color-main;
         }
       }
+    }
+  }
+}
+
+@media(max-width: 850px) {
+  .root {
+    .categories {
+      justify-content: center;
     }
   }
 }

@@ -4,6 +4,7 @@
 .root {
   .container {
     @include container;
+    padding-top: 10px;
 
     .products {
       @include wrapper;
