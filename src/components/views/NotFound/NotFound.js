@@ -15,8 +15,6 @@ const Component = () => (
         <Button component={ Link } to={'/'} variant="contained" color="primary" className={styles.button}>Homepage</Button>
       </div>
       <img src="/images/notfound.png" alt='Logo' title='Oops!' className={styles.image}/>
-      {/* <h1>Oops! Our dog ate this page!</h1>
-      <Button component={ Link } to={'/'} variant="contained" color="primary" className={styles.button}>Go back to Homepage</Button> */}
     </div>
   </div>
 );

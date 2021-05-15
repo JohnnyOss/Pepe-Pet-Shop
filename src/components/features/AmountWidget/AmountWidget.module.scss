@@ -1,0 +1,18 @@
+@import '../../../styles/settings.scss';
+
+.root {
+  display: inline-block;
+  justify-content: flex-start;
+
+  .inputButton {
+    width: 30px;
+    margin: 0 6px;
+  }
+
+  .inputNumber {
+    width: 30px;
+    margin: 0 6px;
+    text-align: center;
+  }
+
+}

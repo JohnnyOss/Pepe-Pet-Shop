@@ -24,12 +24,26 @@
         padding: 10px;
         max-width: 600px;
 
-        h2 {
+        >h2 {
           text-align: center;
         }
 
-        p {
+        >p {
           font-weight: 700;
+        }
+
+        .order {
+          text-align: center;
+          margin: auto;
+          padding: 2px 20px 20px 20px;
+
+          h2, h3 {
+            margin: 8px auto;
+          }
+
+          .icon {
+            margin-left: 12px;
+          }
         }
       }
     }
