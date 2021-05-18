@@ -19,6 +19,10 @@
 
     .button {
       margin-bottom: 15px;
+
+      &:hover {
+        color: $color-text-light;
+      }
     }
   }
 }

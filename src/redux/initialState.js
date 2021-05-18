@@ -263,4 +263,24 @@ export const initialState = {
       error: false,
     },
   },
+  cart: {
+    data: [
+      {
+        id: '1',
+        category: 'Food & Treats',
+        title: 'Puppy dry food',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
+        price: 3,
+        image: ['/images/products/food1.jpg', '/images/products/food2.jpg', '/images/products/food3.jpg'],
+      },
+      {
+        id: '2',
+        category: 'Food & Treats',
+        title: 'Wet food Westie',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
+        price: 5,
+        image: ['/images/products/food4.jpg', '/images/products/food5.jpg', '/images/products/food6.jpg'],
+      },
+    ],
+  },
 };

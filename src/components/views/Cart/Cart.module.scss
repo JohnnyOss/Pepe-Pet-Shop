@@ -1,4 +1,34 @@
 @import '../../../styles/settings.scss';
+@import "../../../styles/mixins.scss";
 
-// .root {
-// }
+.root {
+  .container {
+    @include container;
+    padding: 10px;
+
+    .card {
+      .content {
+        max-width: 980px;
+        text-align: center;
+        margin: auto;
+        padding: 10px;
+
+        .title {
+          margin-bottom: 36px;
+        }
+
+        .button {
+          margin: 10px auto;
+
+          &:hover {
+            color: $color-text-light;
+          }
+
+          .icon {
+            margin-left: 12px;
+          }
+        }
+      }
+    }
+  }
+}
