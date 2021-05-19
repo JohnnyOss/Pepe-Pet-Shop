@@ -39,7 +39,11 @@ class Component extends React.Component {
     const { cart } = this.state;
     const { addToCart } = this.props;
 
-    addToCart(cart);
+    if (cart.amount > 0) {
+      addToCart(cart);
+    } else {
+      alert('Wrong amount');
+    }
   }
 
   render () {

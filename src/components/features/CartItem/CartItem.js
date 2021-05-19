@@ -8,14 +8,19 @@ import PropTypes from 'prop-types';
 
 import styles from './CartItem.module.scss';
 
-const Component = ({className}) => (
+const Component = ({title, image, amount, price}) => (
   <div className={styles.root}>
-    <h2>CartItem</h2>
+    <h2>{title}</h2>
+    <img src={image} alt={title} title={title} />
+    <h2>{amount*price}$</h2>
   </div>
 );
 
 Component.propTypes = {
-  className: PropTypes.string,
+  title: PropTypes.string,
+  image: PropTypes.string,
+  amount: PropTypes.number,
+  price: PropTypes.number,
 };
 
 // const mapStateToProps = state => ({

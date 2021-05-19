@@ -15,59 +15,70 @@ import { getCart } from '../../../redux/productsRedux.js';
 
 import styles from './Cart.module.scss';
 
-const Component = ({cart}) => (
-  <div className={styles.root}>
-    <div className={styles.container}>
-      <Card className={styles.card}>
-        <div className={styles.content}>
-          {cart.length > 0
-            ?
-            <h3>Your order:</h3>
-            :
-            <h3 className={styles.title}>Your cart it is empty!</h3>}
-          {cart.map(product => (
-            <CartItem
-              key={product.id}
-              price={product.price}
-              image={`../${product.image[0]}`}
-              title={product.title}>
-            </CartItem>
-          ))}
-          {cart.length > 0
-            ?
-            <div>
-              <h4>Order price: 99999$</h4>
-              <Button component={ Link } to={'/'} variant="contained" color="primary" className={styles.button}>
-                Go to form
-                <FontAwesomeIcon icon={faFileAlt} className={styles.icon}/>
-              </Button>
+class Component extends React.Component {
+  state = {
+    cart: this.props.cartProducts,
+  }
+
+  render() {
+    const { cartProducts } = this.props;
+
+    return (
+      <div className={styles.root}>
+        <div className={styles.container}>
+          <Card className={styles.card}>
+            <div className={styles.content}>
+              {cartProducts.length > 0
+                ?
+                <h3>Your order:</h3>
+                :
+                <h3 className={styles.title}>Your cart it is empty!</h3>}
+              {cartProducts.map(product => (
+                <CartItem
+                  key={product.id}
+                  price={product.price}
+                  image={`../${product.image[0]}`}
+                  title={product.title}
+                  amount={product.amount}>
+                </CartItem>
+              ))}
+              {cartProducts.length > 0
+                ?
+                <div>
+                  <h4>Order price: 99999$</h4>
+                  <Button component={ Link } to={'/'} variant="contained" color="primary" className={styles.button}>
+                    Go to form
+                    <FontAwesomeIcon icon={faFileAlt} className={styles.icon}/>
+                  </Button>
+                </div>
+                :
+                <div>
+                  <h4>Go to homepage</h4>
+                  <Button component={ Link } to={'/'} variant="contained" color="primary" className={styles.button}>
+                    Homepage
+                    <FontAwesomeIcon icon={faHome} className={styles.icon}/>
+                  </Button>
+                  <h4>Or check our products</h4>
+                  <Button component={ Link } to={'/products/'} variant="contained" color="primary" className={styles.button}>
+                    All Products
+                    <FontAwesomeIcon icon={faStore} className={styles.icon}/>
+                  </Button>
+                </div>}
             </div>
-            :
-            <div>
-              <h4>Go to homepage</h4>
-              <Button component={ Link } to={'/'} variant="contained" color="primary" className={styles.button}>
-                Homepage
-                <FontAwesomeIcon icon={faHome} className={styles.icon}/>
-              </Button>
-              <h4>Or check our products</h4>
-              <Button component={ Link } to={'/products/'} variant="contained" color="primary" className={styles.button}>
-                All Products
-                <FontAwesomeIcon icon={faStore} className={styles.icon}/>
-              </Button>
-            </div>}
+          </Card>
         </div>
-      </Card>
-    </div>
-  </div>
-);
+      </div>
+    );
+  }
+}
 
 Component.propTypes = {
   className: PropTypes.string,
-  cart: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  cartProducts: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 const mapStateToProps = state => ({
-  cart: getCart(state),
+  cartProducts: getCart(state),
 });
 
 // const mapDispatchToProps = dispatch => ({

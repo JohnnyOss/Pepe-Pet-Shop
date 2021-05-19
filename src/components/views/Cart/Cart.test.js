@@ -22,7 +22,7 @@ describe('Component Cart', () => {
         image: ['/images/products/vitamins1.jpg', '/images/products/vitamins2.jpg', '/images/products/vitamins3.jpg'],
       },
     ];
-    const component = shallow(<CartComponent cart={cart}/>);
+    const component = shallow(<CartComponent cartProducts={cart}/>);
     expect(component).toBeTruthy();
   });
 });
