@@ -12,8 +12,8 @@ import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './AmountWidget.module.scss';
 
-const Component = ({setAmount}) => {
-  const [count, setCount] = useState(0);
+const Component = ({setAmount, defaultAmount}) => {
+  const [count, setCount] = useState(defaultAmount || 0);
 
   const orderAmount = amount => {
     if (amount === undefined) {
@@ -79,6 +79,7 @@ const Component = ({setAmount}) => {
 Component.propTypes = {
   className: PropTypes.string,
   setAmount: PropTypes.func,
+  defaultAmount: PropTypes.number,
 };
 
 // const mapStateToProps = state => ({
