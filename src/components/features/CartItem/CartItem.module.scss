@@ -1,7 +1,35 @@
 @import '../../../styles/settings.scss';
+@import "../../../styles/mixins.scss";
 
 .root {
-  img {
-    width: 80px;
+  margin: 15px auto;
+  box-shadow: 5px 5px 10px 1px $color-main;
+
+  .wrapper {
+    @include wrapper;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+
+    .infoBox {
+      min-width: 40%;
+
+      img {
+        width: 80px;
+      }
+    }
+
+    .priceBox {
+      padding: 10px;
+
+      .icon {
+        font-size: 20px;
+        margin: auto 10px;
+      }
+    }
+  }
+
+  .message {
+    margin: 5px auto;
   }
 }

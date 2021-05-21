@@ -2,6 +2,7 @@
 export const getAll = ({products}) => products.data;
 export const getOneProduct = ({products}, id) => products.data.find(item => item.id === id);
 export const getCart = ({products}) => products.cart;
+export const getOneProductFromCart = ({products}, id) => products.cart.find(item => item.id === id);
 
 /* action name creator */
 const reducerName = 'products';
@@ -12,12 +13,14 @@ const FETCH_START = createActionName('FETCH_START');
 const FETCH_SUCCESS = createActionName('FETCH_SUCCESS');
 const FETCH_ERROR = createActionName('FETCH_ERROR');
 const ADD_TO_CART = createActionName('ADD_TO_CART');
+const EDIT_IN_CART = createActionName('EDIT_IN_CART');
 
 /* action creators */
 export const fetchStarted = payload => ({ payload, type: FETCH_START });
 export const fetchSuccess = payload => ({ payload, type: FETCH_SUCCESS });
 export const fetchError = payload => ({ payload, type: FETCH_ERROR });
 export const addToCart = payload => ({ payload, type: ADD_TO_CART });
+export const editInCart = payload => ({ payload, type: EDIT_IN_CART});
 
 /* thunk creators */
 
@@ -56,6 +59,15 @@ export const reducer = (statePart = [], action = {}) => {
       return {
         ...statePart,
         cart: [...statePart.cart, action.payload],
+      };
+    }
+    case EDIT_IN_CART: {
+      const statePartIndex = statePart.cart.findIndex(item => item.id === action.payload.id);
+      statePart.cart.splice(statePartIndex, 1, action.payload);
+
+      return {
+        ...statePart,
+        cart: [...statePart.cart],
       };
     }
     default:
