@@ -31,10 +31,10 @@ class Component extends React.Component {
 
   setAmount = (amount) => {
     const { cart } = this.state;
-    this.setState({ cart: { ...cart, amount: amount }});
+    this.setState({cart: { ...cart, amount: amount , totalPrice: this.props.price * amount }});
 
     const { editItem } = this.props;
-    editItem({  ...cart, amount: amount });
+    editItem({  ...cart, amount: amount , totalPrice: this.props.price * amount });
   }
 
   handleChange = (event) => {

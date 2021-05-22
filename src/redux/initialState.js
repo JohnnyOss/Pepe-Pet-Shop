@@ -215,6 +215,7 @@ export const initialState = {
         price: 3,
         image: ['/images/products/food1.jpg', '/images/products/food2.jpg', '/images/products/food3.jpg'],
         amount: 2,
+        totalPrice: 6,
         message: '',
       },
       {
@@ -225,6 +226,7 @@ export const initialState = {
         price: 5,
         image: ['/images/products/food4.jpg', '/images/products/food5.jpg', '/images/products/food6.jpg'],
         amount: 3,
+        totalPrice: 15,
         message: '',
       },
     ],

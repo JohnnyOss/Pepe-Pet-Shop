@@ -26,13 +26,14 @@ class Component extends React.Component {
       price: this.props.product.price,
       image: this.props.product.image,
       amount: 0,
+      totalPrice: 0,
       message: '',
     },
   }
 
   setAmount = (amount) => {
     const { cart } = this.state;
-    this.setState({cart: { ...cart, amount: amount }});
+    this.setState({cart: { ...cart, amount: amount , totalPrice: this.props.product.price * amount }});
   }
 
   sendToCart = (event) => {
@@ -41,6 +42,7 @@ class Component extends React.Component {
 
     if (cart.amount > 0) {
       addToCart(cart);
+      console.log('cart:', cart);
     } else {
       alert('Wrong amount');
     }

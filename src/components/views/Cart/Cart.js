@@ -42,7 +42,7 @@ class Component extends React.Component {
               {cartProducts.length > 0
                 ?
                 <div>
-                  <h4>Order price: 99999$</h4>
+                  <h4>Order price: {cartProducts.map(product => product.totalPrice).reduce((prev, curr) => prev + curr)}$</h4>
                   <Button component={ Link } to={'/'} variant="contained" color="primary" className={styles.button}>
                     Go to form
                     <FontAwesomeIcon icon={faFileAlt} className={styles.icon}/>
