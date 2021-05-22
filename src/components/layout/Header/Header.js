@@ -10,10 +10,11 @@ import clsx from 'clsx';
 
 import { connect } from 'react-redux';
 import { getCategories } from '../../../redux/categoriesRedux';
+import { getCart } from '../../../redux/productsRedux';
 
 import styles from './Header.module.scss';
 
-const Component = ({className, categories}) => (
+const Component = ({className, categories, cart}) => (
   <div className={clsx(className, styles.root)}>
     <div className={styles.container}>
       <div className={styles.logo}>
@@ -43,7 +44,7 @@ const Component = ({className, categories}) => (
       </div>
       <div className={styles.cart}>
         <Link to={'/cart'} className={styles.link}>
-          <Badge badgeContent={0} color="primary" showZero>
+          <Badge badgeContent={cart.length} color="primary" showZero>
             <FontAwesomeIcon icon={faShoppingCart} className={styles.icon}/>
           </Badge>
         </Link>
@@ -56,10 +57,12 @@ Component.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   categories: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  cart: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 const mapStateToProps = state => ({
   categories: getCategories(state),
+  cart: getCart(state),
 });
 
 // const mapDispatchToProps = dispatch => ({

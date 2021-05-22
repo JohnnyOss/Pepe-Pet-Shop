@@ -12,10 +12,16 @@
     padding: 10px;
 
     .infoBox {
-      min-width: 40%;
+      margin: auto;
+      min-width: 200px;
 
       img {
         width: 80px;
+        margin-top: 20px;
+      }
+
+      h4 {
+        padding: 5px;
       }
     }
 
@@ -27,9 +33,23 @@
         margin: auto 10px;
       }
     }
-  }
 
-  .message {
-    margin: 5px auto;
+    .textarea {
+      min-width: 220px;
+      margin: auto;
+    }
+  }
+}
+
+@media(max-width: 495px) {
+  .root {
+    .wrapper {
+      .infoBox {
+        margin-bottom: 10px;
+      }
+      .priceBox {
+        margin-top: 10px;
+      }
+    }
   }
 }

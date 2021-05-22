@@ -10,7 +10,7 @@ import Card from '@material-ui/core/Card';
 // import clsx from 'clsx';
 
 import { connect } from 'react-redux';
-import { editInCart, getOneProductFromCart, addToCart } from '../../../redux/productsRedux.js';
+import { editInCart, getOneProductFromCart, deleteFromCart } from '../../../redux/productsRedux.js';
 
 import styles from './CartItem.module.scss';
 
@@ -35,8 +35,6 @@ class Component extends React.Component {
 
     const { editItem } = this.props;
     editItem({  ...cart, amount: amount });
-    // console.log('cart', cart);
-    // addToCart(cart);
   }
 
   handleChange = (event) => {
@@ -45,9 +43,13 @@ class Component extends React.Component {
 
     const { editItem } = this.props;
     editItem({  ...cart, message: event.target.value });
-    // console.log('cart', cart);
-    // addToCart(cart);
   };
+
+  deleteFromCart = (event) => {
+    const { cart } = this.state;
+    const { deleteItem } = this.props;
+    deleteItem(cart);
+  }
 
   render() {
     const { title, price, image, amount } = this.props;
@@ -56,26 +58,24 @@ class Component extends React.Component {
       <Card className={styles.root}>
         <div className={styles.wrapper}>
           <div className={styles.infoBox}>
-            <img src={image} alt={title} title={title} />
+            <img src={image[0]} alt={title} title={title} />
             <h4>{title}</h4>
           </div>
-          <Card className={styles.priceBox}>
-            <h4>{cart.amount * price}$</h4>
-            <AmountWidget defaultAmount={amount} setAmount={this.setAmount}/>
-            <FontAwesomeIcon icon={faTrashAlt} className={styles.icon}/>
-          </Card>
-        </div>
-        <div className={styles.message}>
           <TextField
             className={styles.textarea}
             id="outlined-multiline-static"
-            label="Message about product"
+            label="Product comment"
+            size="small"
             multiline
-            rows={1}
             variant="outlined"
             onChange={this.handleChange}
             inputProps={{ maxLength: 50 }}
           />
+          <Card className={styles.priceBox}>
+            <h4>{cart.amount * price}$</h4>
+            <AmountWidget defaultAmount={amount} setAmount={this.setAmount}/>
+            <FontAwesomeIcon icon={faTrashAlt} className={styles.icon} onClick={this.deleteFromCart}/>
+          </Card>
         </div>
       </Card>
     );
@@ -83,15 +83,15 @@ class Component extends React.Component {
 }
 
 Component.propTypes = {
-  id: PropTypes.number,
+  id: PropTypes.string,
   category: PropTypes.string,
   title: PropTypes.string,
-  image: PropTypes.string,
+  image: PropTypes.array,
   amount: PropTypes.number,
   price: PropTypes.number,
   editItem: PropTypes.func,
   productFromCart: PropTypes.func,
-  addToCart: PropTypes.func,
+  deleteItem: PropTypes.func,
 };
 
 const mapStateToProps = (state, key) => ({
@@ -99,8 +99,8 @@ const mapStateToProps = (state, key) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  editItem: edit => dispatch(editInCart(edit)),
-  addToCart: add => dispatch(addToCart(add)),
+  editItem: product => dispatch(editInCart(product)),
+  deleteItem: product => dispatch(deleteFromCart(product)),
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);

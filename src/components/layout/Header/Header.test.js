@@ -20,7 +20,18 @@ describe('Component Header', () => {
         image: '/images/categories/toy.jpg',
       },
     ];
-    const component = shallow(<HeaderComponent categories={categories} />);
+
+    const cart =[
+      {
+        id: 3,
+        name: 'test',
+      },
+      {
+        id: 4,
+        name: 'fff',
+      },
+    ];
+    const component = shallow(<HeaderComponent categories={categories} cart={cart} />);
     expect(component).toBeTruthy();
   });
 });

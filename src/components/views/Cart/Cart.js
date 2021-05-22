@@ -36,10 +36,7 @@ class Component extends React.Component {
               {cartProducts.map(product => (
                 <CartItem
                   key={product.id}
-                  price={product.price}
-                  image={`../${product.image[0]}`}
-                  title={product.title}
-                  amount={product.amount}>
+                  {...product}>
                 </CartItem>
               ))}
               {cartProducts.length > 0
