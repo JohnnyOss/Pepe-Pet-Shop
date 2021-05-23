@@ -4,51 +4,65 @@
 .root {
   margin: 15px auto;
   box-shadow: 5px 5px 10px 1px $color-main;
+  padding: 10px;
 
   .wrapper {
     @include wrapper;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 5px;
 
     .infoBox {
       margin: auto;
-      min-width: 200px;
+
+      display: inline-flex;
 
       img {
-        width: 80px;
-        margin-top: 20px;
+        width: 70px;
       }
 
       h4 {
-        padding: 5px;
+        padding-left: 5px;
+        margin: auto;
       }
     }
 
-    .priceBox {
+    .amountBox {
+      margin: auto;
+
+      span {
+        font-family: $font-header;
+        font-size: 22px;
+        margin-left: 20px;
+      }
+    }
+
+    .editBox {
       padding: 10px;
+
+      .widget {
+        padding: 15px;
+      }
 
       .icon {
         font-size: 20px;
         margin: auto 10px;
       }
     }
+  }
 
-    .textarea {
-      min-width: 220px;
-      margin: auto;
-    }
+  .textarea {
+    margin-top: 10px;
   }
 }
 
-@media(max-width: 495px) {
+@media(max-width: 352px) {
   .root {
     .wrapper {
-      .infoBox {
-        margin-bottom: 10px;
-      }
-      .priceBox {
-        margin-top: 10px;
+      .editBox {
+        .icon {
+          margin: 10px 10px auto 10px;
+        }
       }
     }
   }

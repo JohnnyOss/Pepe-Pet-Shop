@@ -24,6 +24,7 @@ class Component extends React.Component {
       price: this.props.price,
       image: this.props.image,
       amount: this.props.amount,
+      totalPrice: this.props.totalPrice,
       message: '',
     },
   }
@@ -31,7 +32,7 @@ class Component extends React.Component {
 
   setAmount = (amount) => {
     const { cart } = this.state;
-    this.setState({cart: { ...cart, amount: amount , totalPrice: this.props.price * amount }});
+    this.setState({ cart: { ...cart, amount: amount , totalPrice: this.props.price * amount }});
 
     const { editItem } = this.props;
     editItem({  ...cart, amount: amount , totalPrice: this.props.price * amount });
@@ -40,6 +41,7 @@ class Component extends React.Component {
   handleChange = (event) => {
     const { cart } = this.state;
     this.setState({ cart: { ...cart, message: event.target.value }});
+    console.log('cart', cart);
 
     const { editItem } = this.props;
     editItem({  ...cart, message: event.target.value });
@@ -52,7 +54,7 @@ class Component extends React.Component {
   }
 
   render() {
-    const { title, price, image, amount } = this.props;
+    const { title, price, image, amount, edit } = this.props;
     const { cart } = this.state;
     return(
       <Card className={styles.root}>
@@ -61,6 +63,22 @@ class Component extends React.Component {
             <img src={image[0]} alt={title} title={title} />
             <h4>{title}</h4>
           </div>
+          <div className={styles.amountBox}>
+            <span>Amount: {amount}</span>
+            <span>Price:{cart.amount * price}$</span>
+          </div>
+          {edit
+            ?
+            <div className={styles.editBox}>
+              <Card className={styles.widget}>
+                <AmountWidget defaultAmount={amount} setAmount={this.setAmount}/>
+                <FontAwesomeIcon icon={faTrashAlt} className={styles.icon} onClick={this.deleteFromCart}/>
+              </Card>
+            </div>
+            : null}
+        </div>
+        {edit
+          ?
           <TextField
             className={styles.textarea}
             id="outlined-multiline-static"
@@ -70,13 +88,9 @@ class Component extends React.Component {
             variant="outlined"
             onChange={this.handleChange}
             inputProps={{ maxLength: 50 }}
+            fullWidth
           />
-          <Card className={styles.priceBox}>
-            <h4>{cart.amount * price}$</h4>
-            <AmountWidget defaultAmount={amount} setAmount={this.setAmount}/>
-            <FontAwesomeIcon icon={faTrashAlt} className={styles.icon} onClick={this.deleteFromCart}/>
-          </Card>
-        </div>
+          : null}
       </Card>
     );
   }
@@ -89,9 +103,11 @@ Component.propTypes = {
   image: PropTypes.array,
   amount: PropTypes.number,
   price: PropTypes.number,
+  totalPrice: PropTypes.number,
   editItem: PropTypes.func,
   productFromCart: PropTypes.func,
   deleteItem: PropTypes.func,
+  edit: PropTypes.bool,
 };
 
 const mapStateToProps = (state, key) => ({

@@ -36,14 +36,15 @@ class Component extends React.Component {
               {cartProducts.map(product => (
                 <CartItem
                   key={product.id}
-                  {...product}>
+                  {...product}
+                  edit={true}>
                 </CartItem>
               ))}
               {cartProducts.length > 0
                 ?
                 <div>
                   <h4>Order price: {cartProducts.map(product => product.totalPrice).reduce((prev, curr) => prev + curr)}$</h4>
-                  <Button component={ Link } to={'/'} variant="contained" color="primary" className={styles.button}>
+                  <Button component={ Link } to={'/form'} variant="contained" color="primary" className={styles.button}>
                     Go to form
                     <FontAwesomeIcon icon={faFileAlt} className={styles.icon}/>
                   </Button>
