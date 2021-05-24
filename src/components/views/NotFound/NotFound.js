@@ -11,7 +11,7 @@ const Component = () => (
   <div className={styles.root}>
     <div className={styles.container}>
       <div className={styles.text}>
-        <h2>Oops!<br></br> Our dog ate this page!</h2>
+        <h3>Oops!<br></br> Our dog ate this page!</h3>
         <Button component={ Link } to={'/'} variant="contained" color="primary" className={styles.button}>Homepage</Button>
       </div>
       <img src="/images/notfound.png" alt='Logo' title='Oops!' className={styles.image}/>

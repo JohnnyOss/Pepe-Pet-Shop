@@ -287,4 +287,16 @@ export const initialState = {
       error: false,
     },
   },
+  orders: {
+    data: [
+      {
+        orderItems: [],
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        orderDate: '',
+      },
+    ],
+  },
 };
