@@ -35,6 +35,29 @@
       }
     }
   }
+
+  .containerEmpty {
+    @include container;
+    margin: 10px auto;
+    padding: 10px;
+    text-align: center;
+
+    .titleEmpty {
+      margin-bottom: 36px;
+    }
+
+    .buttonEmpty {
+      margin: 10px auto;
+
+      &:hover {
+        color: $color-text-light;
+      }
+
+      .icon {
+        margin-left: 12px;
+      }
+    }
+  }
 }
 
 @media(max-width: 650px) {

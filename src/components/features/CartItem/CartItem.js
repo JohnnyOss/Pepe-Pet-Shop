@@ -41,7 +41,6 @@ class Component extends React.Component {
   handleChange = (event) => {
     const { cart } = this.state;
     this.setState({ cart: { ...cart, message: event.target.value }});
-    console.log('cart', cart);
 
     const { editItem } = this.props;
     editItem({  ...cart, message: event.target.value });

@@ -15,6 +15,7 @@ const FETCH_ERROR = createActionName('FETCH_ERROR');
 const ADD_TO_CART = createActionName('ADD_TO_CART');
 const EDIT_IN_CART = createActionName('EDIT_IN_CART');
 const DELETE_FROM_CART = createActionName('DELETE_FROM_CART');
+const DELETE_ALL_CART = createActionName('DELETE_ALL_CART');
 
 /* action creators */
 export const fetchStarted = payload => ({ payload, type: FETCH_START });
@@ -23,6 +24,7 @@ export const fetchError = payload => ({ payload, type: FETCH_ERROR });
 export const addToCart = payload => ({ payload, type: ADD_TO_CART });
 export const editInCart = payload => ({ payload, type: EDIT_IN_CART});
 export const deleteFromCart = payload => ({ payload, type: DELETE_FROM_CART});
+export const deleteAllCart = payload => ({ payload, type: DELETE_ALL_CART});
 
 /* thunk creators */
 
@@ -77,6 +79,12 @@ export const reducer = (statePart = [], action = {}) => {
       return {
         ...statePart,
         cart: [...statePart.cart],
+      };
+    }
+    case DELETE_ALL_CART: {
+      return {
+        ...statePart,
+        cart: [],
       };
     }
     default:

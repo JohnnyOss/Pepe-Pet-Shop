@@ -1,20 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import uniqid from 'uniqid';
 
 import { Card } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { faPaperPlane, faHome, faStore } from '@fortawesome/free-solid-svg-icons';
 
-import { NotFound } from '../NotFound/NotFound';
 import { CartItem } from '../../features/CartItem/CartItem';
 
 // import clsx from 'clsx';
 
 import { connect } from 'react-redux';
-import { getCart } from '../../../redux/productsRedux.js';
+import { getCart, deleteAllCart } from '../../../redux/productsRedux.js';
 import { saveOrder } from '../../../redux/ordersRedux';
 
 import styles from './FormPage.module.scss';
@@ -22,6 +23,7 @@ import styles from './FormPage.module.scss';
 class Component extends React.Component {
   state = {
     order: {
+      id: '',
       orderItems: this.props.cartProducts,
       firstName: '',
       lastName: '',
@@ -31,7 +33,30 @@ class Component extends React.Component {
     },
   }
 
-  handleSumbit = () => {
+  handleChange = (event) => {
+    const { order } = this.state;
+    this.setState({ order: { ...order, [event.target.name]: event.target.value } });
+  };
+
+  submitForm = (event) => {
+    event.preventDefault();
+    const { order } = this.state;
+    const { sendOrder, deleteItems } = this.props;
+
+    if(order.firstName.length < 3) return alert('Min. 3 characters in first name');
+    if(order.lastName.length < 3) return alert('Min. 3 characters in last name');
+
+    if((order.firstName.length > 3) && (order.lastName.length > 3) && order.email && order.phone && order.orderItems) {
+      order.id = uniqid();
+      const today = new Date();
+      order.orderDate = today;
+      sendOrder(order);
+      console.log('order:', order);
+      alert('Your order has been sended');
+      deleteItems(order);
+    } else {
+      alert('Please fill required fields');
+    }
   }
 
   render() {
@@ -54,7 +79,7 @@ class Component extends React.Component {
               <h4 className={styles.title}>Order price: {cartProducts.map(product => product.totalPrice).reduce((prev, curr) => prev + curr)}$</h4>
             </div>
             <h2 className={styles.title}>Fill form to send order:</h2>
-            <form className={styles.form}>
+            <form onSubmit={this.submitForm} className={styles.form}>
               <Grid>
                 <Grid className={styles.formItem}>
                   <TextField
@@ -63,6 +88,7 @@ class Component extends React.Component {
                     id="firstName"
                     label="First name"
                     fullWidth
+                    onChange={this.handleChange}
                   />
                 </Grid>
                 <Grid className={styles.formItem}>
@@ -72,6 +98,7 @@ class Component extends React.Component {
                     id="lastName"
                     label="Last name"
                     fullWidth
+                    onChange={this.handleChange}
                   />
                 </Grid>
                 <Grid className={styles.formItem}>
@@ -82,6 +109,7 @@ class Component extends React.Component {
                     id="email"
                     label="Email address"
                     fullWidth
+                    onChange={this.handleChange}
                   />
                 </Grid>
                 <Grid className={styles.formItem}>
@@ -92,6 +120,7 @@ class Component extends React.Component {
                     id="phone"
                     label="Phone number"
                     fullWidth
+                    onChange={this.handleChange}
                   />
                 </Grid>
               </Grid>
@@ -107,120 +136,28 @@ class Component extends React.Component {
             </form>
           </Card>
           :
-          <NotFound />}
+          <Card className={styles.containerEmpty}>
+            <h3 className={styles.titleEmpty}>Your cart it is empty!</h3>
+            <h4>Go to homepage</h4>
+            <Button component={ Link } to={'/'} variant="contained" color="primary" className={styles.buttonEmpty}>
+              Homepage
+              <FontAwesomeIcon icon={faHome} className={styles.icon}/>
+            </Button>
+            <h4>Or check our products</h4>
+            <Button component={ Link } to={'/products/'} variant="contained" color="primary" className={styles.buttonEmpty}>
+              All Products
+              <FontAwesomeIcon icon={faStore} className={styles.icon}/>
+            </Button>
+          </Card>}
       </div>
     );
   }
 }
 
-// const Component = ({cartProducts}) => (
-//   <div className={styles.root}>
-//     {cartProducts.length > 0
-//       ?
-//       <Card className={styles.container}>
-//         <div className={styles.summary}>
-//           <h3 className={styles.title}>Order summary:</h3>
-//           {cartProducts.map(product => (
-//             <CartItem
-//               key={product.id}
-//               {...product}
-//               edit={false}
-//               className={styles.summaryItem}>
-//             </CartItem>
-//           ))}
-//         </div>
-//         <h2 className={styles.title}>Fill form to send order:</h2>
-//         <Formik
-//           initialValues={{
-//             firstName: '',
-//             surname: '',
-//             phone: '',
-//             email: '',
-//             orderData: '',
-//           }}
-//           validationSchema={Yup.object().shape({
-//             firstName: Yup.string().required('First name is required'),
-//             surname: Yup.string().required('Surname is required'),
-//             author: Yup.string().required()
-//               .email()
-//               .required('Enter valid email'),
-//             phone: Yup.number()
-//               .positive()
-//               .integer(),
-//           })}
-//         >
-//           {({ handleChange, errors, touched, values }) => (
-//             <Form className={styles.form}>
-//               <Grid className={styles.formItem}>
-//                 <TextField
-//                   required
-//                   name="firstName"
-//                   id="firstName"
-//                   label="First name"
-//                   value={values.firstName}
-//                   fullWidth
-//                   onChange={handleChange}
-//                   error={errors.firstName && touched.firstName ? true : false}
-//                 />
-//               </Grid>
-//               <Grid className={styles.formItem}>
-//                 <TextField
-//                   required
-//                   name="surname"
-//                   id="surname"
-//                   label="Surname"
-//                   value={values.surname}
-//                   fullWidth
-//                   onChange={handleChange}
-//                   error={errors.surname && touched.surname ? true : false}
-//                 />
-//               </Grid>
-//               <Grid className={styles.formItem}>
-//                 <TextField
-//                   required
-//                   type="email"
-//                   name="email"
-//                   id="email"
-//                   label="Email address"
-//                   value={values.email}
-//                   fullWidth
-//                   onChange={handleChange}
-//                   error={errors.email && touched.email ? true : false}
-//                 />
-//               </Grid>
-//               <Grid className={styles.formItem}>
-//                 <TextField
-//                   required
-//                   type="phone"
-//                   name="phone"
-//                   id="phone"
-//                   label="Phone number"
-//                   value={values.phone}
-//                   fullWidth
-//                   onChange={handleChange}
-//                   error={errors.phone && touched.phone ? true : false}
-//                 />
-//               </Grid>
-//             </Form>
-//           )}
-//         </Formik>
-//         <Button
-//           variant="contained"
-//           color="primary"
-//           className={styles.button}
-//         >
-//           Send Order
-//           <FontAwesomeIcon icon={faPaperPlane} className={styles.icon}/>
-//         </Button>
-//       </Card>
-//       :
-//       <NotFound />}
-//   </div>
-// );
-
 Component.propTypes = {
   cartProducts: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   sendOrder: PropTypes.func,
+  deleteItems: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
@@ -229,6 +166,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   sendOrder: order => dispatch(saveOrder(order)),
+  deleteItems: order => dispatch(deleteAllCart(order)),
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);

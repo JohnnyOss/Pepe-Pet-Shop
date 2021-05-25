@@ -42,7 +42,6 @@ class Component extends React.Component {
 
     if (cart.amount > 0) {
       addToCart(cart);
-      console.log('cart:', cart);
     } else {
       alert('Wrong amount');
     }
