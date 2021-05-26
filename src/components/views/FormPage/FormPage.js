@@ -46,12 +46,12 @@ class Component extends React.Component {
     if(order.firstName.length < 3) return alert('Min. 3 characters in first name');
     if(order.lastName.length < 3) return alert('Min. 3 characters in last name');
 
-    if((order.firstName.length > 3) && (order.lastName.length > 3) && order.email && order.phone && order.orderItems) {
+    if((order.firstName.length > 2) && (order.lastName.length > 2) && order.email && order.phone && order.orderItems) {
       order.id = uniqid();
       const today = new Date();
       order.orderDate = today;
       sendOrder(order);
-      console.log('order:', order);
+      // console.log('order:', order);
       alert('Your order has been sended');
       deleteItems(order);
     } else {
@@ -115,7 +115,7 @@ class Component extends React.Component {
                 <Grid className={styles.formItem}>
                   <TextField
                     required
-                    type="phone"
+                    type="number"
                     name="phone"
                     id="phone"
                     label="Phone number"
