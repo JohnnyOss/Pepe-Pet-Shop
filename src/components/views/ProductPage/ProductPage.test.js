@@ -12,7 +12,8 @@ describe('Component ProductPage', () => {
       price: 135,
       image: ['/images/products/vitamins1.jpg', '/images/products/vitamins2.jpg', '/images/products/vitamins3.jpg'],
     };
-    const component = shallow(<ProductPageComponent product={product}/>);
+    const fetchProduct = function(){};
+    const component = shallow(<ProductPageComponent fetchProduct={fetchProduct} product={product}/>);
     expect(component).toBeTruthy();
   });
 });

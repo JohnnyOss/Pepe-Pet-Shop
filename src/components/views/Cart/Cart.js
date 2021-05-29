@@ -35,7 +35,7 @@ class Component extends React.Component {
                 <h3 className={styles.title}>Your cart it is empty!</h3>}
               {cartProducts.map(product => (
                 <CartItem
-                  key={product.id}
+                  key={product._id}
                   {...product}
                   edit={true}>
                 </CartItem>

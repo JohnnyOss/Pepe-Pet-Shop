@@ -8,27 +8,31 @@ import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
-
 // import clsx from 'clsx';
 
 import { connect } from 'react-redux';
-import { getOneProduct, addToCart } from '../../../redux/productsRedux.js';
+import { getOneProduct, addToCart, fetchOneProduct } from '../../../redux/productsRedux.js';
 
 import styles from './ProductPage.module.scss';
 
 class Component extends React.Component {
   state = {
     cart: {
-      id: this.props.product.id,
+      _id: this.props.product._id,
       category: this.props.product.category,
       title: this.props.product.title,
       description: this.props.product.description,
       price: this.props.product.price,
-      image: this.props.product.image,
+      image1: this.props.product.image,
       amount: 0,
       totalPrice: 0,
       message: '',
     },
+  }
+
+  componentDidMount() {
+    const { fetchProduct } = this.props;
+    fetchProduct();
   }
 
   setAmount = (amount) => {
@@ -57,13 +61,13 @@ class Component extends React.Component {
           <div className={styles.wrapper}>
             <Carousel className={styles.slider}>
               <div>
-                <img src={product.image[0]} alt={product.title} title={product.title}/>
+                <img src={product.image === undefined ? '/images/logo.png' : product.image[0]} alt={product.title} title={product.title}/>
               </div>
               <div>
-                <img src={product.image[1]} alt={product.title} title={product.title}/>
+                <img src={product.image === undefined ? '/images/logo.png' : product.image[1]} alt={product.title} title={product.title}/>
               </div>
               <div>
-                <img src={product.image[2]} alt={product.title} title={product.title}/>
+                <img src={product.image === undefined ? '/images/logo.png' : product.image[2]} alt={product.title} title={product.title}/>
               </div>
             </Carousel>
             <Card className={styles.information}>
@@ -95,16 +99,18 @@ class Component extends React.Component {
 }
 
 Component.propTypes = {
-  product: PropTypes.object,
+  product: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   addToCart: PropTypes.func,
+  fetchProduct: PropTypes.func,
 };
 
-const mapStateToProps = (state, props) => ({
-  product: getOneProduct(state, props.match.params.id),
+const mapStateToProps = (state) => ({
+  product: getOneProduct(state),
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch, props) => ({
   addToCart: add => dispatch(addToCart(add)),
+  fetchProduct: () => dispatch(fetchOneProduct(props.match.params.id)),
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);

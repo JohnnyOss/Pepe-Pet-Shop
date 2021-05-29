@@ -1,6 +1,8 @@
+import Axios from 'axios';
+
 /* selectors */
 export const getAll = ({products}) => products.data;
-export const getOneProduct = ({products}, id) => products.data.find(item => item.id === id);
+export const getOneProduct = ({products}) => products.oneProduct;
 export const getCart = ({products}) => products.cart;
 export const getOneProductFromCart = ({products}, id) => products.cart.find(item => item.id === id);
 
@@ -16,6 +18,7 @@ const ADD_TO_CART = createActionName('ADD_TO_CART');
 const EDIT_IN_CART = createActionName('EDIT_IN_CART');
 const DELETE_FROM_CART = createActionName('DELETE_FROM_CART');
 const DELETE_ALL_CART = createActionName('DELETE_ALL_CART');
+const FETCH_ONE = createActionName('FETCH_ONE');
 
 /* action creators */
 export const fetchStarted = payload => ({ payload, type: FETCH_START });
@@ -25,8 +28,40 @@ export const addToCart = payload => ({ payload, type: ADD_TO_CART });
 export const editInCart = payload => ({ payload, type: EDIT_IN_CART});
 export const deleteFromCart = payload => ({ payload, type: DELETE_FROM_CART});
 export const deleteAllCart = payload => ({ payload, type: DELETE_ALL_CART});
+export const fetchOne = payload => ({ payload, type: FETCH_ONE });
 
 /* thunk creators */
+
+export const fetchAllProducts = () => {
+  return(dispatch, getState) => {
+    dispatch(fetchStarted());
+
+    Axios
+      .get('http://localhost:8000/api/products')
+      .then(res => {
+        dispatch(fetchSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(fetchError(err.message || true));
+      });
+
+  };
+};
+
+export const fetchOneProduct = (id) => {
+  return (dispatch, getState) => {
+    dispatch(fetchStarted());
+
+    Axios
+      .get(`http://localhost:8000/api/products/${id}`)
+      .then(res => {
+        dispatch(fetchOne(res.data));
+      })
+      .catch(err => {
+        dispatch(fetchError(err.message || true));
+      });
+  };
+};
 
 /* reducer */
 export const reducer = (statePart = [], action = {}) => {
@@ -85,6 +120,16 @@ export const reducer = (statePart = [], action = {}) => {
       return {
         ...statePart,
         cart: [],
+      };
+    }
+    case FETCH_ONE: {
+      return {
+        ...statePart,
+        loading: {
+          active: false,
+          error: false,
+        },
+        oneProduct: action.payload,
       };
     }
     default:

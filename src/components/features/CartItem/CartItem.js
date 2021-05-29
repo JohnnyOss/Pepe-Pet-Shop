@@ -18,7 +18,7 @@ class Component extends React.Component {
 
   state = {
     cart: {
-      id: this.props.id,
+      _id: this.props._id,
       category: this.props.category,
       title: this.props.title,
       price: this.props.price,
@@ -96,7 +96,7 @@ class Component extends React.Component {
 }
 
 Component.propTypes = {
-  id: PropTypes.string,
+  _id: PropTypes.string,
   category: PropTypes.string,
   title: PropTypes.string,
   image: PropTypes.array,

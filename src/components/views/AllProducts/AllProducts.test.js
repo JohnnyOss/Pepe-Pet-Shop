@@ -6,7 +6,7 @@ describe('Component AllProducts', () => {
   it('should render without crashing', () => {
     const products = [
       {
-        id: 1,
+        _id: 1,
         category: 'test',
         title: 'Puppy dry food',
         description: 'nisi ut aliquip ex ea commodo consequat',
@@ -14,7 +14,7 @@ describe('Component AllProducts', () => {
         image: ['/images/products/food1.jpg', '/images/products/food2.jpg', '/images/products/food3.jpg'],
       },
       {
-        id: 2,
+        _id: 2,
         category: 'health',
         title: 'dddd',
         description: 'magna aliquco laboris',
@@ -22,7 +22,8 @@ describe('Component AllProducts', () => {
         image: ['/images/products/food4.jpg', '/images/products/food5.jpg', '/images/products/food6.jpg'],
       },
     ];
-    const component = shallow(<AllProductsComponent products= {products}/>);
+    const allProducts = function(){};
+    const component = shallow(<AllProductsComponent allProducts={allProducts} products= {products}/>);
     expect(component).toBeTruthy();
   });
 });

@@ -6,7 +6,7 @@ describe('Component Cart', () => {
   it('should render without crashing', () => {
     const cart = [
       {
-        id: '3123123',
+        _id: '3123123',
         category: 'Vitamins & Supplements',
         title: 'Joint for Dogs',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
@@ -14,7 +14,7 @@ describe('Component Cart', () => {
         image: ['/images/products/vitamins1.jpg', '/images/products/vitamins2.jpg', '/images/products/vitamins3.jpg'],
       },
       {
-        id: '32131113',
+        _id: '32131113',
         category: 'Vitamins & Supplements',
         title: 'Joint for Dogs',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',

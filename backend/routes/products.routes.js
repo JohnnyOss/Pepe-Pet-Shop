@@ -26,4 +26,27 @@ router.get('/products/:id', async (req, res) => {
   }
 });
 
+router.get('/products/category/:category', async (req, res) => {
+  try {
+    const byCategory = await Product.find({ category: req.params.category });
+    if(!byCategory) res.status(404).json({ product: 'Not found'});
+    else res.json(byCategory);
+  }
+  catch(err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/products/category/:category/:id', async (req, res) => {
+  try {
+    const byCategory = await Product.find({ category: req.params.category });
+    const byCategoryProduct = await Product.findById(req.params.id);
+    if(!byCategory) res.status(404).json({ product: 'Not found'});
+    else res.json(byCategoryProduct);
+  }
+  catch(err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
