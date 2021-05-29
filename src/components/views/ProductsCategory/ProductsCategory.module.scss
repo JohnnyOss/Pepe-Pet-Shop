@@ -4,12 +4,16 @@
 .root {
   .container {
     @include container;
-    padding-top: 10px;
 
-    .products {
-      @include wrapper;
-      justify-content: space-around;
-      margin-bottom: 15px;
+    .card {
+      padding: 10px;
+      margin: 20px auto;
+
+      .products {
+        @include wrapper;
+        justify-content: space-around;
+        margin-bottom: 15px;
+      }
     }
   }
 }

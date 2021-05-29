@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 // import clsx from 'clsx';
 
+import { Card } from '@material-ui/core';
 import { ProductBox } from '../../features/ProductBox/ProductBox';
 
 import { connect } from 'react-redux';
@@ -22,19 +23,21 @@ class Component extends React.Component {
     return(
       <div className={styles.root}>
         <div className={styles.container}>
-          <h1>All Products</h1>
-          <div className={styles.products}>
-            {products.map(product => (
-              <ProductBox
-                key={product._id}
-                price={product.price}
-                link={`/products/${product.category}/${product._id}`}
-                image={`../${product.image[0]}`}
-                name={product.name}
-                title={product.title}
-              />
-            ))}
-          </div>
+          <Card className={styles.card}>
+            <h1>All Products</h1>
+            <div className={styles.products}>
+              {products.map(product => (
+                <ProductBox
+                  key={product._id}
+                  price={product.price}
+                  link={`/products/${product.category}/${product._id}`}
+                  image={`../${product.image[0]}`}
+                  name={product.name}
+                  title={product.title}
+                />
+              ))}
+            </div>
+          </Card>
         </div>
       </div>
     );

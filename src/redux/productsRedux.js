@@ -101,7 +101,7 @@ export const reducer = (statePart = [], action = {}) => {
       };
     }
     case EDIT_IN_CART: {
-      const statePartIndex = statePart.cart.findIndex(item => item.id === action.payload.id);
+      const statePartIndex = statePart.cart.findIndex(item => item._id === action.payload._id);
       statePart.cart.splice(statePartIndex, 1, action.payload);
       return {
         ...statePart,
@@ -109,7 +109,7 @@ export const reducer = (statePart = [], action = {}) => {
       };
     }
     case DELETE_FROM_CART: {
-      const statePartIndex = statePart.cart.findIndex(item => item.id === action.payload.id);
+      const statePartIndex = statePart.cart.findIndex(item => item._id === action.payload._id);
       statePart.cart.splice(statePartIndex, 1);
       return {
         ...statePart,
