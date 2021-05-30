@@ -28,6 +28,7 @@ class Component extends React.Component {
       email: '',
       phone: '',
       orderDate: '',
+      totalPrice: '',
     },
   }
 
@@ -39,16 +40,17 @@ class Component extends React.Component {
   submitForm = (event) => {
     event.preventDefault();
     const { order } = this.state;
-    const { sendOrder, deleteItems } = this.props;
+    const { sendOrder, deleteItems, cartProducts } = this.props;
 
     if(order.firstName.length < 3) return alert('Min. 3 characters in first name');
     if(order.lastName.length < 3) return alert('Min. 3 characters in last name');
+    if(order.phone < 0 || order.phone.length < 7) return alert('Wrong phone number');
 
-    if((order.firstName.length > 2) && (order.lastName.length > 2) && order.email && order.phone && order.orderItems) {
+    if((order.firstName.length > 2) && (order.lastName.length > 2) && order.email && (order.phone > 0 && order.phone.length > 6) && order.orderItems) {
       const today = new Date();
       order.orderDate = today;
+      order.totalPrice = cartProducts.map(product => product.totalPrice).reduce((prev, curr) => prev + curr);
       sendOrder(order);
-      console.log('order:', order);
       alert('Your order has been sended');
       deleteItems(order);
     } else {

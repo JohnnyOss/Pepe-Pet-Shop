@@ -51,8 +51,6 @@ class Component extends React.Component {
     cart.price = product.price;
     cart.image = product.image[0];
 
-    console.log('produkt info: ', cart);
-
     if (cart.amount > 0) {
       addToCart(cart);
     } else {

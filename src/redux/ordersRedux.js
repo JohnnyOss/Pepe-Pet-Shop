@@ -26,7 +26,7 @@ export const fetchNewOrder = (order) => {
     dispatch(fetchStarted());
 
     Axios
-      .post('http://localhost:8000/api/form', order)
+      .post('http://localhost:8000/api/orders', order)
       .then(res => {
         dispatch(saveOrder(order));
       })
