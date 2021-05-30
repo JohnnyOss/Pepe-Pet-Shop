@@ -42,7 +42,16 @@ class Component extends React.Component {
 
   sendToCart = (event) => {
     const { cart } = this.state;
-    const { addToCart } = this.props;
+    const { addToCart, product } = this.props;
+
+    cart._id = product._id;
+    cart.category = product.category;
+    cart.title = product.title;
+    cart.description = product.description;
+    cart.price = product.price;
+    cart.image = product.image[0];
+
+    console.log('produkt info: ', cart);
 
     if (cart.amount > 0) {
       addToCart(cart);
