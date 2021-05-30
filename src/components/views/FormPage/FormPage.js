@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import uniqid from 'uniqid';
 
 import { Card } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
@@ -16,14 +15,13 @@ import { CartItem } from '../../features/CartItem/CartItem';
 
 import { connect } from 'react-redux';
 import { getCart, deleteAllCart } from '../../../redux/productsRedux.js';
-import { saveOrder } from '../../../redux/ordersRedux';
+import { fetchNewOrder } from '../../../redux/ordersRedux';
 
 import styles from './FormPage.module.scss';
 
 class Component extends React.Component {
   state = {
     order: {
-      id: '',
       orderItems: this.props.cartProducts,
       firstName: '',
       lastName: '',
@@ -47,11 +45,10 @@ class Component extends React.Component {
     if(order.lastName.length < 3) return alert('Min. 3 characters in last name');
 
     if((order.firstName.length > 2) && (order.lastName.length > 2) && order.email && order.phone && order.orderItems) {
-      order.id = uniqid();
       const today = new Date();
       order.orderDate = today;
       sendOrder(order);
-      // console.log('order:', order);
+      console.log('order:', order);
       alert('Your order has been sended');
       deleteItems(order);
     } else {
@@ -70,7 +67,7 @@ class Component extends React.Component {
               <h3 className={styles.title}>Order summary:</h3>
               {cartProducts.map(product => (
                 <CartItem
-                  key={product.id}
+                  key={product._id}
                   {...product}
                   edit={false}
                   className={styles.summaryItem}>
@@ -165,7 +162,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  sendOrder: order => dispatch(saveOrder(order)),
+  sendOrder: order => dispatch(fetchNewOrder(order)),
   deleteItems: order => dispatch(deleteAllCart(order)),
 });
 

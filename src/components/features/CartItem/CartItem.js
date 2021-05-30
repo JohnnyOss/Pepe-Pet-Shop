@@ -59,7 +59,7 @@ class Component extends React.Component {
       <Card className={styles.root}>
         <div className={styles.wrapper}>
           <div className={styles.infoBox}>
-            <img src={image[0]} alt={title} title={title} />
+            <img src={image === undefined ? '/images/logo.png' : image[0]} alt={title} title={title} />
             <h4>{title}</h4>
           </div>
           <div className={styles.amountBox}>

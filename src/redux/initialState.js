@@ -267,5 +267,9 @@ export const initialState = {
   },
   orders: {
     data: [],
+    loading: {
+      active: false,
+      error: false,
+    },
   },
 };

@@ -1,3 +1,5 @@
+import Axios from 'axios';
+
 /* selectors */
 export const getOrder = ({orders}) => orders.data;
 
@@ -18,6 +20,23 @@ export const fetchError = payload => ({ payload, type: FETCH_ERROR });
 export const saveOrder = payload => ({ payload, type: SAVE_ORDER });
 
 /* thunk creators */
+
+export const fetchNewOrder = (order) => {
+  return(dispatch, getState) => {
+    console.log('order', order);
+
+    dispatch(fetchStarted());
+
+    Axios
+      .post('http://localhost:8000/api/form', order)
+      .then(res => {
+        dispatch(saveOrder(order));
+      })
+      .catch(err => {
+        dispatch(fetchError(err.message || true));
+      });
+  };
+};
 
 /* reducer */
 export const reducer = (statePart = [], action = {}) => {
