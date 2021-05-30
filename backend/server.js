@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 
 const productsRoutes = require('./routes/products.routes');
 const ordersRoutes = require('./routes/orders.routes');
+const categoriesRoutes = require('./routes/categories.routes');
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 /* API ENDPOINTS */
 app.use('/api', productsRoutes);
 app.use('/api', ordersRoutes);
+app.use('/api', categoriesRoutes);
 
 /* API ERROR PAGES */
 app.use('/api', (req, res) => {

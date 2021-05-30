@@ -23,8 +23,6 @@ export const saveOrder = payload => ({ payload, type: SAVE_ORDER });
 
 export const fetchNewOrder = (order) => {
   return(dispatch, getState) => {
-    console.log('order', order);
-
     dispatch(fetchStarted());
 
     Axios

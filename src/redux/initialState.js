@@ -211,54 +211,54 @@ export const initialState = {
   },
   categories: {
     data: [
-      {
-        id: 1,
-        name: 'Food & Treats',
-        priceMin: 3,
-        image: '/images/categories/food.jpg',
-      },
-      {
-        id: 2,
-        name: 'Toys',
-        priceMin: 5,
-        image: '/images/categories/toy.jpg',
-      },
-      {
-        id: 3,
-        name: 'Accessories',
-        priceMin: 10,
-        image: '/images/categories/accessories.jpg',
-      },
-      {
-        id: 4,
-        name: 'Health & Wellness',
-        priceMin: 10,
-        image: '/images/categories/health.jpg',
-      },
-      {
-        id: 5,
-        name: 'Leashes & Collars',
-        priceMin: 5,
-        image: '/images/categories/leashes.jpg',
-      },
-      {
-        id: 6,
-        name: 'Beds',
-        priceMin: 20,
-        image: '/images/categories/bed.jpg',
-      },
-      {
-        id: 7,
-        name: 'Bowls',
-        priceMin: 3,
-        image: '/images/categories/bowl.jpg',
-      },
-      {
-        id: 8,
-        name: 'Vitamins & Supplements',
-        priceMin: 15,
-        image: '/images/categories/vitamins.jpg',
-      },
+    //   {
+    //     id: 1,
+    //     name: 'Food & Treats',
+    //     priceMin: 3,
+    //     image: '/images/categories/food.jpg',
+    //   },
+    //   {
+    //     id: 2,
+    //     name: 'Toys',
+    //     priceMin: 5,
+    //     image: '/images/categories/toy.jpg',
+    //   },
+    //   {
+    //     id: 3,
+    //     name: 'Accessories',
+    //     priceMin: 10,
+    //     image: '/images/categories/accessories.jpg',
+    //   },
+    //   {
+    //     id: 4,
+    //     name: 'Health & Wellness',
+    //     priceMin: 10,
+    //     image: '/images/categories/health.jpg',
+    //   },
+    //   {
+    //     id: 5,
+    //     name: 'Leashes & Collars',
+    //     priceMin: 5,
+    //     image: '/images/categories/leashes.jpg',
+    //   },
+    //   {
+    //     id: 6,
+    //     name: 'Beds',
+    //     priceMin: 20,
+    //     image: '/images/categories/bed.jpg',
+    //   },
+    //   {
+    //     id: 7,
+    //     name: 'Bowls',
+    //     priceMin: 3,
+    //     image: '/images/categories/bowl.jpg',
+    //   },
+    //   {
+    //     id: 8,
+    //     name: 'Vitamins & Supplements',
+    //     priceMin: 15,
+    //     image: '/images/categories/vitamins.jpg',
+    //   },
     ],
     loading: {
       active: false,
