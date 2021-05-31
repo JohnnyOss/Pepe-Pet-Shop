@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 import Button from '@material-ui/core/Button';
 import { Card } from '@material-ui/core';
@@ -24,7 +25,12 @@ class Component extends React.Component {
     const { cartProducts } = this.props;
 
     return (
-      <div className={styles.root}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0}}
+        className={styles.root}
+      >
         <div className={styles.container}>
           <Card className={styles.card}>
             <div className={styles.content}>
@@ -65,7 +71,7 @@ class Component extends React.Component {
             </div>
           </Card>
         </div>
-      </div>
+      </motion.div>
     );
   }
 }

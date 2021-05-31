@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
 
 // import clsx from 'clsx';
 
@@ -17,7 +18,12 @@ const Component = ({ products, match, fetchProducts }) => {
   });
 
   return(
-    <div className={styles.root}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0}}
+      className={styles.root}
+    >
       <div className={styles.container}>
         <Card className={styles.card}>
           <h1>{match.params.categoryId}</h1>
@@ -35,7 +41,7 @@ const Component = ({ products, match, fetchProducts }) => {
           </div>
         </Card>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

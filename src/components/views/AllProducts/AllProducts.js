@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
 
 // import clsx from 'clsx';
 
@@ -21,7 +22,12 @@ class Component extends React.Component {
   render() {
     const { products } = this.props;
     return(
-      <div className={styles.root}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0}}
+        className={styles.root}
+      >
         <div className={styles.container}>
           <Card className={styles.card}>
             <h1>All Products</h1>
@@ -39,7 +45,7 @@ class Component extends React.Component {
             </div>
           </Card>
         </div>
-      </div>
+      </motion.div>
     );
   }
 }

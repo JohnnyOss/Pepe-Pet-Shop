@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { motion } from 'framer-motion';
 
 import { AmountWidget } from '../../features/AmountWidget/AmountWidget';
 import Card from '@material-ui/core/Card';
@@ -63,7 +64,12 @@ class Component extends React.Component {
     const { cart } = this.state;
 
     return (
-      <div className={styles.root}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0}}
+        className={styles.root}
+      >
         <div className={styles.container}>
           <div className={styles.wrapper}>
             <Carousel className={styles.slider}>
@@ -100,7 +106,7 @@ class Component extends React.Component {
             </Card>
           </div>
         </div>
-      </div>
+      </motion.div>
     );
   }
 }

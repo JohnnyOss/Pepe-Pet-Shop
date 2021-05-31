@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { AnimatePresence } from 'framer-motion';
 
 import { createMuiTheme, StylesProvider, ThemeProvider } from '@material-ui/core/styles';
 import { CssBaseline } from '@material-ui/core';
@@ -29,15 +30,17 @@ const App = () => (
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <MainLayout>
-            <Switch>
-              <Route exact path='/' component={Homepage} />
-              <Route exact path='/products' component={AllProducts} />
-              <Route exact path='/products/:categoryId' component={ProductsCategory} />
-              <Route exact path='/products/:categoryId/:id' component={ProductPage} />
-              <Route exact path='/cart' component={Cart} />
-              <Route exact path='/form' component={FormPage} />
-              <Route path='*' component={NotFound} />
-            </Switch>
+            <AnimatePresence exitBeforeEnter>
+              <Switch>
+                <Route exact path='/' component={Homepage} />
+                <Route exact path='/products' component={AllProducts} />
+                <Route exact path='/products/:categoryId' component={ProductsCategory} />
+                <Route exact path='/products/:categoryId/:id' component={ProductPage} />
+                <Route exact path='/cart' component={Cart} />
+                <Route exact path='/form' component={FormPage} />
+                <Route path='*' component={NotFound} />
+              </Switch>
+            </AnimatePresence>
           </MainLayout>
         </ThemeProvider>
       </StylesProvider>

@@ -3,21 +3,27 @@ import PropTypes from 'prop-types';
 
 import { Carousel } from '../../features/Carousel/Carousel';
 import { CategoriesBox } from '../../features/CategoriesBox/CategoriesBox';
+import { motion } from 'framer-motion';
 
-import clsx from 'clsx';
+// import clsx from 'clsx';
 
 // import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
 
 import styles from './Homepage.module.scss';
 
-const Component = ({className}) => (
-  <div className={clsx(className, styles.root)}>
+const Component = () => (
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0}}
+    className={styles.root}
+  >
     <div className={styles.container}>
       <Carousel />
       <CategoriesBox />
     </div>
-  </div>
+  </motion.div>
 );
 
 Component.propTypes = {

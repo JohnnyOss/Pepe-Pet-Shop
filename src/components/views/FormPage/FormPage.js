@@ -8,6 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane, faHome, faStore } from '@fortawesome/free-solid-svg-icons';
+import { motion } from 'framer-motion';
 
 import { CartItem } from '../../features/CartItem/CartItem';
 
@@ -61,7 +62,12 @@ class Component extends React.Component {
   render() {
     const { cartProducts } = this.props;
     return(
-      <div className={styles.root}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0}}
+        className={styles.root}
+      >
         {cartProducts.length > 0
           ?
           <Card className={styles.container}>
@@ -148,7 +154,7 @@ class Component extends React.Component {
               <FontAwesomeIcon icon={faStore} className={styles.icon}/>
             </Button>
           </Card>}
-      </div>
+      </motion.div>
     );
   }
 }
