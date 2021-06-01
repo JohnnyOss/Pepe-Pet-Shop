@@ -9,6 +9,8 @@ import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import Snackbar from '@material-ui/core/Snackbar';
+
 // import clsx from 'clsx';
 
 import { connect } from 'react-redux';
@@ -29,6 +31,7 @@ class Component extends React.Component {
       totalPrice: 0,
       message: '',
     },
+    open: false,
   }
 
   componentDidMount() {
@@ -40,6 +43,14 @@ class Component extends React.Component {
     const { cart } = this.state;
     this.setState({cart: { ...cart, amount: amount , totalPrice: this.props.product.price * amount }});
   }
+
+  handleOpen = () => {
+    this.setState({open: true});
+  };
+
+  handleClose = (state) => {
+    this.setState({ ...state, open: false });
+  };
 
   sendToCart = (event) => {
     const { cart } = this.state;
@@ -54,6 +65,7 @@ class Component extends React.Component {
 
     if (cart.amount > 0) {
       addToCart(cart);
+      this.handleOpen();
     } else {
       alert('Wrong amount');
     }
@@ -61,7 +73,7 @@ class Component extends React.Component {
 
   render () {
     const { product } = this.props;
-    const { cart } = this.state;
+    const { cart, open } = this.state;
 
     return (
       <motion.div
@@ -101,6 +113,13 @@ class Component extends React.Component {
                     Add to cart
                     <FontAwesomeIcon icon={faCartPlus} className={styles.icon}/>
                   </Button>
+                  <Snackbar
+                    open={open}
+                    autoHideDuration={3000}
+                    onClose={this.handleClose}
+                    message="Product added to cart"
+                    className={styles.snackbar}
+                  />
                 </div>
               </Card>
             </Card>
@@ -115,6 +134,7 @@ Component.propTypes = {
   product: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   addToCart: PropTypes.func,
   fetchProduct: PropTypes.func,
+  handleOpen: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({

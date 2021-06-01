@@ -9,6 +9,7 @@ import TextField from '@material-ui/core/TextField';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane, faHome, faStore } from '@fortawesome/free-solid-svg-icons';
 import { motion } from 'framer-motion';
+import Snackbar from '@material-ui/core/Snackbar';
 
 import { CartItem } from '../../features/CartItem/CartItem';
 
@@ -31,11 +32,20 @@ class Component extends React.Component {
       orderDate: '',
       totalPrice: '',
     },
+    open: false,
   }
 
   handleChange = (event) => {
     const { order } = this.state;
     this.setState({ order: { ...order, [event.target.name]: event.target.value } });
+  };
+
+  handleOpen = () => {
+    this.setState({open: true});
+  };
+
+  handleClose = (state) => {
+    this.setState({ ...state, open: false });
   };
 
   submitForm = (event) => {
@@ -52,7 +62,7 @@ class Component extends React.Component {
       order.orderDate = today;
       order.totalPrice = cartProducts.map(product => product.totalPrice).reduce((prev, curr) => prev + curr);
       sendOrder(order);
-      alert('Your order has been sended');
+      this.handleOpen();
       deleteItems(order);
     } else {
       alert('Please fill required fields');
@@ -61,6 +71,7 @@ class Component extends React.Component {
 
   render() {
     const { cartProducts } = this.props;
+    const { open } = this.state;
     return(
       <motion.div
         initial={{ opacity: 0 }}
@@ -154,6 +165,13 @@ class Component extends React.Component {
               <FontAwesomeIcon icon={faStore} className={styles.icon}/>
             </Button>
           </Card>}
+        <Snackbar
+          open={open}
+          autoHideDuration={5000}
+          onClose={this.handleClose}
+          message="Your order has been sended"
+          className={styles.snackbar}
+        />
       </motion.div>
     );
   }

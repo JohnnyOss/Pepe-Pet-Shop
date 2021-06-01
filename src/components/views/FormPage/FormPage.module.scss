@@ -58,6 +58,12 @@
       }
     }
   }
+
+  .snackbar {
+    div {
+      background: $color-success;
+    }
+  }
 }
 
 @media(max-width: 650px) {
