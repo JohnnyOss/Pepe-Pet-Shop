@@ -16,7 +16,6 @@ import { CartItem } from '../../features/CartItem/CartItem';
 // import clsx from 'clsx';
 
 import { connect } from 'react-redux';
-import { getCart, deleteAllCart } from '../../../redux/productsRedux.js';
 import { fetchNewOrder } from '../../../redux/ordersRedux';
 
 import styles from './FormPage.module.scss';
@@ -24,7 +23,7 @@ import styles from './FormPage.module.scss';
 class Component extends React.Component {
   state = {
     order: {
-      orderItems: this.props.cartProducts,
+      orderItems: this.props.cartContent,
       firstName: '',
       lastName: '',
       email: '',
@@ -51,27 +50,32 @@ class Component extends React.Component {
   submitForm = (event) => {
     event.preventDefault();
     const { order } = this.state;
-    const { sendOrder, deleteItems, cartProducts } = this.props;
+    const { sendOrder } = this.props;
+    const cartContent = JSON.parse(localStorage.getItem('cartItem'));
+    const orderItems = cartContent;
 
     if(order.firstName.length < 3) return alert('Min. 3 characters in first name');
     if(order.lastName.length < 3) return alert('Min. 3 characters in last name');
     if(order.phone < 0 || order.phone.length < 7) return alert('Wrong phone number');
 
-    if((order.firstName.length > 2) && (order.lastName.length > 2) && order.email && (order.phone > 0 && order.phone.length > 6) && order.orderItems) {
+    if((order.firstName.length > 2) && (order.lastName.length > 2) && order.email && (order.phone > 0 && order.phone.length > 6)) {
       const today = new Date();
+      order.orderItems = orderItems;
       order.orderDate = today;
-      order.totalPrice = cartProducts.map(product => product.totalPrice).reduce((prev, curr) => prev + curr);
+      order.totalPrice = cartContent.map(product => product.totalPrice).reduce((prev, curr) => prev + curr);
       sendOrder(order);
       this.handleOpen();
-      deleteItems(order);
+      if(localStorage.getItem('cartItem')) {
+        localStorage.removeItem('cartItem');
+      }
     } else {
       alert('Please fill required fields');
     }
   }
 
   render() {
-    const { cartProducts } = this.props;
     const { open } = this.state;
+    const cartContent = JSON.parse(localStorage.getItem('cartItem'));
     return(
       <motion.div
         initial={{ opacity: 0 }}
@@ -79,12 +83,12 @@ class Component extends React.Component {
         exit={{ opacity: 0}}
         className={styles.root}
       >
-        {cartProducts.length > 0
+        {cartContent !== null
           ?
           <Card className={styles.container}>
             <div className={styles.summary}>
               <h3 className={styles.title}>Order summary:</h3>
-              {cartProducts.map(product => (
+              {cartContent === null ? null : cartContent.map(product => (
                 <CartItem
                   key={product._id}
                   {...product}
@@ -92,7 +96,7 @@ class Component extends React.Component {
                   className={styles.summaryItem}>
                 </CartItem>
               ))}
-              <h4 className={styles.title}>Order price: {cartProducts.map(product => product.totalPrice).reduce((prev, curr) => prev + curr)}$</h4>
+              <h4 className={styles.title}>Order price: {cartContent.map(product => product.totalPrice).reduce((prev, curr) => prev + curr)}$</h4>
             </div>
             <h2 className={styles.title}>Fill form to send order:</h2>
             <form onSubmit={this.submitForm} className={styles.form}>
@@ -178,21 +182,19 @@ class Component extends React.Component {
 }
 
 Component.propTypes = {
-  cartProducts: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  cartContent: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   sendOrder: PropTypes.func,
   deleteItems: PropTypes.func,
 };
 
-const mapStateToProps = state => ({
-  cartProducts: getCart(state),
-});
+// const mapStateToProps = state => ({
+// });
 
 const mapDispatchToProps = dispatch => ({
   sendOrder: order => dispatch(fetchNewOrder(order)),
-  deleteItems: order => dispatch(deleteAllCart(order)),
 });
 
-const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
+const Container = connect(null, mapDispatchToProps)(Component);
 
 export {
   // Component as FormPage,

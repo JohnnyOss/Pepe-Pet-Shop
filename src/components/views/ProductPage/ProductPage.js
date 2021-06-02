@@ -66,6 +66,27 @@ class Component extends React.Component {
     if (cart.amount > 0) {
       addToCart(cart);
       this.handleOpen();
+
+      const cartItem = [
+        {
+          _id: cart._id,
+          category: cart.category,
+          title: cart.title,
+          description: cart.city,
+          price: cart.price,
+          image: cart.image,
+          amount: cart.amount,
+          totalPrice: cart.totalPrice,
+        },
+      ];
+
+      if(localStorage.getItem('cartItem') !== null) {
+        const fromStorage = JSON.parse(localStorage.getItem('cartItem'));
+        fromStorage.push(cartItem[0]);
+        localStorage.setItem('cartItem', JSON.stringify(fromStorage));
+      } else {
+        localStorage.setItem('cartItem', JSON.stringify(cartItem));
+      }
     } else {
       alert('Wrong amount');
     }

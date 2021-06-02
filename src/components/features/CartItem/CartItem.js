@@ -36,6 +36,16 @@ class Component extends React.Component {
 
     const { editItem } = this.props;
     editItem({  ...cart, amount: amount , totalPrice: this.props.price * amount });
+
+    const ordersFromStorage = JSON.parse(localStorage.getItem('cartItem'));
+    const findedOrderFromStorage = ordersFromStorage.find(el => el._id === this.props._id);
+    const findedOrderIndex = ordersFromStorage.indexOf(findedOrderFromStorage);
+
+    findedOrderFromStorage.amount = amount;
+    findedOrderFromStorage.totalPrice = findedOrderFromStorage.price * amount;
+
+    ordersFromStorage.splice(findedOrderIndex, 1, findedOrderFromStorage);
+    localStorage.setItem('cartItem', JSON.stringify(ordersFromStorage));
   }
 
   handleChange = (event) => {
@@ -44,12 +54,26 @@ class Component extends React.Component {
 
     const { editItem } = this.props;
     editItem({  ...cart, message: event.target.value });
+
+    const ordersFromStorage = JSON.parse(localStorage.getItem('cartItem'));
+    const findedOrderFromStorage = ordersFromStorage.find(el => el._id === this.props._id);
+    const findedOrderIndex = ordersFromStorage.indexOf(findedOrderFromStorage);
+
+    findedOrderFromStorage.message = event.target.value;
+
+    ordersFromStorage.splice(findedOrderIndex, 1, findedOrderFromStorage);
+    localStorage.setItem('cartItem', JSON.stringify(ordersFromStorage));
   };
 
   deleteFromCart = (event) => {
     const { cart } = this.state;
     const { deleteItem } = this.props;
     deleteItem(cart);
+
+    const ordersFromStorage = JSON.parse(localStorage.getItem('cartItem'));
+    const findedOrderIndex = ordersFromStorage.findIndex(el => el._id === this.props._id);
+    ordersFromStorage.splice(findedOrderIndex, 1);
+    localStorage.setItem('cartItem', JSON.stringify(ordersFromStorage));
   }
 
   render() {
@@ -63,7 +87,7 @@ class Component extends React.Component {
             <h4>{title}</h4>
           </div>
           <div className={styles.amountBox}>
-            <span>Amount: {amount}</span>
+            <span>Amount: {cart.amount}</span>
             <span>Price:{cart.amount * price}$</span>
           </div>
           {edit

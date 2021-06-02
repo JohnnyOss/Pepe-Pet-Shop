@@ -22,7 +22,9 @@ class Component extends React.Component {
   }
 
   render() {
-    const { cartProducts } = this.props;
+    // const { cartProducts } = this.props;
+
+    const cartContent = JSON.parse(localStorage.getItem('cartItem'));
 
     return (
       <motion.div
@@ -34,22 +36,22 @@ class Component extends React.Component {
         <div className={styles.container}>
           <Card className={styles.card}>
             <div className={styles.content}>
-              {cartProducts.length > 0
+              {cartContent !== null
                 ?
                 <h3>Your order:</h3>
                 :
                 <h3 className={styles.title}>Your cart it is empty!</h3>}
-              {cartProducts.map(product => (
+              {cartContent === null ? null : cartContent.map(product => (
                 <CartItem
                   key={product._id}
                   {...product}
                   edit={true}>
                 </CartItem>
               ))}
-              {cartProducts.length > 0
+              {cartContent === null ? null : cartContent.length > 0
                 ?
                 <div>
-                  <h4>Order price: {cartProducts.map(product => product.totalPrice).reduce((prev, curr) => prev + curr)}$</h4>
+                  <h4>Order price: {cartContent.lenght > 0 ? cartContent.map(product => product.totalPrice).reduce((prev, curr) => prev + curr) : null}$</h4>
                   <Button component={ Link } to={'/form'} variant="contained" color="primary" className={styles.button}>
                     Go to form
                     <FontAwesomeIcon icon={faFileAlt} className={styles.icon}/>
