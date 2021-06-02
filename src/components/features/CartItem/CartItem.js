@@ -74,6 +74,11 @@ class Component extends React.Component {
     const findedOrderIndex = ordersFromStorage.findIndex(el => el._id === this.props._id);
     ordersFromStorage.splice(findedOrderIndex, 1);
     localStorage.setItem('cartItem', JSON.stringify(ordersFromStorage));
+
+    if(ordersFromStorage.length < 1){
+      localStorage.removeItem('cartItem');
+    }
+
   }
 
   render() {

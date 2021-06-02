@@ -22,8 +22,6 @@ class Component extends React.Component {
   }
 
   render() {
-    // const { cartProducts } = this.props;
-
     const cartContent = JSON.parse(localStorage.getItem('cartItem'));
 
     return (
@@ -48,10 +46,10 @@ class Component extends React.Component {
                   edit={true}>
                 </CartItem>
               ))}
-              {cartContent === null ? null : cartContent.length > 0
+              {cartContent !== null
                 ?
                 <div>
-                  <h4>Order price: {cartContent.lenght > 0 ? cartContent.map(product => product.totalPrice).reduce((prev, curr) => prev + curr) : null}$</h4>
+                  <h4>Order price: {cartContent.map(product => product.totalPrice).reduce((prev, curr) => prev + curr)}$</h4>
                   <Button component={ Link } to={'/form'} variant="contained" color="primary" className={styles.button}>
                     Go to form
                     <FontAwesomeIcon icon={faFileAlt} className={styles.icon}/>

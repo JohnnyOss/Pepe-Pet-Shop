@@ -83,99 +83,105 @@ class Component extends React.Component {
         exit={{ opacity: 0}}
         className={styles.root}
       >
-        {cartContent !== null
-          ?
-          <Card className={styles.container}>
-            <div className={styles.summary}>
-              <h3 className={styles.title}>Order summary:</h3>
-              {cartContent === null ? null : cartContent.map(product => (
-                <CartItem
-                  key={product._id}
-                  {...product}
-                  edit={false}
-                  className={styles.summaryItem}>
-                </CartItem>
-              ))}
+        <Card className={styles.container}>
+          {cartContent !== null
+            ?
+            <h3 className={styles.title}>Order summary:</h3>
+            :
+            null}
+          <div className={styles.summary}>
+            {cartContent === null ? null : cartContent.map(product => (
+              <CartItem
+                key={product._id}
+                {...product}
+                edit={false}
+                className={styles.summaryItem}>
+              </CartItem>
+            ))}
+          </div>
+          {cartContent !== null
+            ?
+            <div>
               <h4 className={styles.title}>Order price: {cartContent.map(product => product.totalPrice).reduce((prev, curr) => prev + curr)}$</h4>
+              <h2 className={styles.title}>Fill form to send order:</h2>
+              <form onSubmit={this.submitForm} className={styles.form}>
+                <Grid>
+                  <Grid className={styles.formItem}>
+                    <TextField
+                      required
+                      name="firstName"
+                      id="firstName"
+                      label="First name"
+                      fullWidth
+                      onChange={this.handleChange}
+                    />
+                  </Grid>
+                  <Grid className={styles.formItem}>
+                    <TextField
+                      required
+                      name="lastName"
+                      id="lastName"
+                      label="Last name"
+                      fullWidth
+                      onChange={this.handleChange}
+                    />
+                  </Grid>
+                  <Grid className={styles.formItem}>
+                    <TextField
+                      required
+                      type="email"
+                      name="email"
+                      id="email"
+                      label="Email address"
+                      fullWidth
+                      onChange={this.handleChange}
+                    />
+                  </Grid>
+                  <Grid className={styles.formItem}>
+                    <TextField
+                      required
+                      type="number"
+                      name="phone"
+                      id="phone"
+                      label="Phone number"
+                      fullWidth
+                      onChange={this.handleChange}
+                    />
+                  </Grid>
+                </Grid>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  className={styles.button}
+                >
+                  Send Order
+                  <FontAwesomeIcon icon={faPaperPlane} className={styles.icon}/>
+                </Button>
+              </form>
             </div>
-            <h2 className={styles.title}>Fill form to send order:</h2>
-            <form onSubmit={this.submitForm} className={styles.form}>
-              <Grid>
-                <Grid className={styles.formItem}>
-                  <TextField
-                    required
-                    name="firstName"
-                    id="firstName"
-                    label="First name"
-                    fullWidth
-                    onChange={this.handleChange}
-                  />
-                </Grid>
-                <Grid className={styles.formItem}>
-                  <TextField
-                    required
-                    name="lastName"
-                    id="lastName"
-                    label="Last name"
-                    fullWidth
-                    onChange={this.handleChange}
-                  />
-                </Grid>
-                <Grid className={styles.formItem}>
-                  <TextField
-                    required
-                    type="email"
-                    name="email"
-                    id="email"
-                    label="Email address"
-                    fullWidth
-                    onChange={this.handleChange}
-                  />
-                </Grid>
-                <Grid className={styles.formItem}>
-                  <TextField
-                    required
-                    type="number"
-                    name="phone"
-                    id="phone"
-                    label="Phone number"
-                    fullWidth
-                    onChange={this.handleChange}
-                  />
-                </Grid>
-              </Grid>
-              <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                className={styles.button}
-              >
-                Send Order
-                <FontAwesomeIcon icon={faPaperPlane} className={styles.icon}/>
+            :
+            <Card className={styles.containerEmpty}>
+              <h3 className={styles.titleEmpty}>Your cart it is empty!</h3>
+              <h4>Go to homepage</h4>
+              <Button component={ Link } to={'/'} variant="contained" color="primary" className={styles.buttonEmpty}>
+                Homepage
+                <FontAwesomeIcon icon={faHome} className={styles.icon}/>
               </Button>
-            </form>
-          </Card>
-          :
-          <Card className={styles.containerEmpty}>
-            <h3 className={styles.titleEmpty}>Your cart it is empty!</h3>
-            <h4>Go to homepage</h4>
-            <Button component={ Link } to={'/'} variant="contained" color="primary" className={styles.buttonEmpty}>
-              Homepage
-              <FontAwesomeIcon icon={faHome} className={styles.icon}/>
-            </Button>
-            <h4>Or check our products</h4>
-            <Button component={ Link } to={'/products/'} variant="contained" color="primary" className={styles.buttonEmpty}>
-              All Products
-              <FontAwesomeIcon icon={faStore} className={styles.icon}/>
-            </Button>
-          </Card>}
-        <Snackbar
-          open={open}
-          autoHideDuration={5000}
-          onClose={this.handleClose}
-          message="Your order has been sended"
-          className={styles.snackbar}
-        />
+              <h4>Or check our products</h4>
+              <Button component={ Link } to={'/products/'} variant="contained" color="primary" className={styles.buttonEmpty}>
+                All Products
+                <FontAwesomeIcon icon={faStore} className={styles.icon}/>
+              </Button>
+              <Snackbar
+                open={open}
+                autoHideDuration={5000}
+                onClose={this.handleClose}
+                message="Your order has been sended"
+                className={styles.snackbar}
+              />
+            </Card>}
+        </Card>
       </motion.div>
     );
   }
