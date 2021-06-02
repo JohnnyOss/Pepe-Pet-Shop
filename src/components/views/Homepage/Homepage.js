@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Carousel } from '../../features/Carousel/Carousel';
 import { CategoriesBox } from '../../features/CategoriesBox/CategoriesBox';
+import { InfoBox } from '../../features/InfoBox/InfoBox';
 import { motion } from 'framer-motion';
 
 // import clsx from 'clsx';
@@ -22,6 +23,7 @@ const Component = () => (
     <div className={styles.container}>
       <Carousel />
       <CategoriesBox />
+      <InfoBox />
     </div>
   </motion.div>
 );

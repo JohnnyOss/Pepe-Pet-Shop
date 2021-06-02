@@ -1,0 +1,33 @@
+@import '../../../styles/settings.scss';
+@import "../../../styles/mixins.scss";
+
+.root {
+  .container {
+    @include container;
+    @include wrapper;
+    padding: 20px;
+    margin: 20px auto;
+
+    .box {
+      flex-wrap: wrap;
+      text-align: center;
+      flex: 0 0 30%;
+      min-width: 280px;
+      margin: 10px auto;
+      padding: 10px;
+      background-color: $color-main;
+      transition: $transition;
+
+      &:hover {
+        background-color: $color-background-color;
+      }
+
+      .boxIcon {
+        margin: 5px auto;
+        .icon {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
