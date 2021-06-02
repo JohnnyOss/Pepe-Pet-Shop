@@ -17,6 +17,7 @@
       padding: 10px;
       background-color: $color-main;
       transition: $transition;
+      border: 3px solid $color-main;
 
       &:hover {
         background-color: $color-background-color;

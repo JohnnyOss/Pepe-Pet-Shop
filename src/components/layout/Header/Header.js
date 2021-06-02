@@ -41,7 +41,11 @@ const Component = ({className, categories}) => {
                 ))}
               </ul>
             </li>
-            <li>About Us</li>
+            <li>
+              <Link to={'/about/'} className={styles.allproducts}>
+                About us
+              </Link>
+            </li>
             <li>Contact</li>
           </ul>
         </div>

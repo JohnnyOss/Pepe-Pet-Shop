@@ -35,6 +35,10 @@
           font-family: $font-header;
 
           &:hover {
+            >a {
+              color: $color-main;
+            }
+
             ul {
               visibility: visible;
               opacity: 1;

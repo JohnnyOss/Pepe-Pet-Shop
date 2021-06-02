@@ -31,7 +31,7 @@ const Component = ({className}) => (
           <ul className={styles.menu}>
             <li><Link to={'/'}>Home</Link></li>
             <li><Link to={'/products'}>Our products</Link></li>
-            <li><Link to='#'>About Us</Link></li>
+            <li><Link to={'/about'}>About Us</Link></li>
             <li><Link to='#'>Contact</Link></li>
             <li><Link to='#'>Our blog</Link></li>
           </ul>

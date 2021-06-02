@@ -1,0 +1,115 @@
+@import '../../../styles/settings.scss';
+@import "../../../styles/mixins.scss";
+
+.root {
+  .container {
+    @include container;
+    padding: 10px;
+    margin: 20px auto;
+    background-color: white;
+
+    .about {
+      .title {
+        margin: 10px auto;
+        text-align: center;
+      }
+
+      .wrapper {
+        @include wrapper;
+
+        .boxAbout {
+          min-width: 260px;
+          flex: 0 0 20%;
+          margin: 10px auto;
+          padding: 20px;
+          text-align: center;
+
+          .icon {
+              font-size: 20px;
+              line-height: 100px;
+              height: 150px;
+              width: 150px;
+              border-radius: 50%;
+              background: $color-background-color;
+              margin: 25px auto;
+              padding: 40px;
+              transition: $transition;
+              color: $color-text-dark;
+          }
+
+          &:hover .icon {
+              background: $color-main;
+              color: $color-text-light;
+          }
+        }
+      }
+
+      span {
+        font-size: 22px;
+        font-style: italic;
+        font-weight: 800;
+        margin: auto 5px;
+        color: $color-main;
+      }
+    }
+
+    .motto {
+      height: 60vh;
+      position: relative;
+      background-image: url('/images/about-image.jpg');
+      background-position: center center;
+      background-size: cover;
+      background-attachment: fixed;
+      color: $color-text-light;
+      margin: 30 auto;
+      padding: 40px;
+
+      .boxMotto {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+          width: 70%;
+          text-align: center;
+
+          img {
+              height: 120px;
+              width: 120px;
+              border-radius: 120px;
+              overflow: hidden;
+          }
+
+          p {
+
+              span {
+                color: $color-main;
+                font-weight: 600;
+              }
+
+             &:first-of-type {
+                  font-size: 30px;
+                  font-style: italic;
+             }
+          }
+      }
+    }
+
+    .contact {
+      margin-top: 40px;
+      padding: 20px;
+      text-align: center;
+
+      .button {
+        margin: 20px auto;
+
+        .icon {
+          margin-left: 12px;
+        }
+
+        &:hover {
+          color: $color-text-light;
+        }
+      }
+    }
+  }
+}
