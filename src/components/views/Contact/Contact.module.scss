@@ -1,0 +1,118 @@
+@import '../../../styles/settings.scss';
+@import "../../../styles/mixins.scss";
+
+.root {
+  .container {
+    @include container;
+    text-align: center;
+    margin: 20px auto;
+    padding: 10px;
+
+    .title {
+      margin: 24px auto;
+    }
+
+    .wrapper {
+      @include wrapper;
+
+      .contact {
+        margin: 10px auto;
+
+        .socialmedia {
+          margin-bottom: 10px;
+
+          .icon {
+            padding: 10px;
+            margin-right: 8px;
+            font-size: 40px;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            border-radius: 50%;
+            color: #ffffff;
+
+            &:hover {
+              transform: scale(1.15);
+              transition: $transition;
+            }
+          }
+
+          .facebook {
+            background-color:#1877f2;
+          }
+          .twitter {
+            background-color:#1da1f2;
+          }
+          .instagram {
+            background-color:#c32aa3;
+          }
+          .pinterest {
+            background-color:#bd081c;
+          }
+        }
+      }
+
+      .map {
+        flex: 0 0 70%;
+        margin: 0 auto;
+        padding: 10px;
+
+        .socialmedia {
+          margin: 24px auto;
+
+          .icon {
+            padding: 10px;
+            margin-right: 8px;
+            font-size: 40px;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            border-radius: 50%;
+            color: #ffffff;
+
+            &:hover {
+              transform: scale(1.15);
+              transition: $transition;
+            }
+          }
+
+          .facebook {
+            background-color:#1877f2;
+          }
+          .twitter {
+            background-color:#1da1f2;
+          }
+          .instagram {
+            background-color:#c32aa3;
+          }
+          .pinterest {
+            background-color:#bd081c;
+          }
+        }
+
+        .image {
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: 696px) {
+  .root {
+    .container {
+      .wrapper{
+        .contact {
+          flex: 0 0 100%;
+        }
+        .map {
+          .image {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

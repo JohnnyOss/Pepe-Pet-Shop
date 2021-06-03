@@ -57,7 +57,7 @@ const Component = () => (
       <div className={styles.contact}>
         <h1>Do you have any questions?</h1>
         <h5>Check on our contact subpage how you can contact with us.</h5>
-        <Button component={ Link } to={'/cart/'}
+        <Button component={ Link } to={'/contact/'}
           variant="contained"
           color="primary"
           className={styles.button}
