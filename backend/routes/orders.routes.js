@@ -33,10 +33,23 @@ router.post('/orders', async (req, res) => {
     const { orderItems, firstName, lastName, email, phone, orderDate, totalPrice } = req.body;
     console.log('req.body', req.body);
 
-    const newOrder = new Order({ orderItems, firstName, lastName, email, phone, orderDate, totalPrice });
-    await newOrder.save();
-    console.log('newOrder', newOrder);
-    res.json(newOrder);
+    const emailPattern = new RegExp('^[a-zA-Z0-9][a-zA-Z0-9_.-]+@[a-zA-Z0-9][a-zA-Z0-9_.-]+.{1,3}[a-zA-Z]{2,4}');
+    const phonePattern = new RegExp('[0-9]{6,13}');
+    const emailMatched = (email.match(emailPattern) || []).join('');
+    const phoneMatched = (phone.match(phonePattern) || []).join('');
+
+    if((emailMatched.length < email.length) || (phoneMatched.length < phone.length)) {
+      throw new Error('Wrong characters!');
+    }
+
+    if((emailMatched.length === email.length) && (phoneMatched.length === phone.length) && firstName.length > 2 && lastName.length > 2) {
+      const newOrder = new Order({ orderItems, firstName, lastName, email, phone, orderDate, totalPrice });
+
+      await newOrder.save();
+      res.json(newOrder);
+    } else {
+      throw new Error('Wrong input!');
+    }
   }
   catch(err) {
     res.status(500).json(err);

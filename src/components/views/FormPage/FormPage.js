@@ -56,9 +56,9 @@ class Component extends React.Component {
 
     if(order.firstName.length < 3) return alert('Min. 3 characters in first name');
     if(order.lastName.length < 3) return alert('Min. 3 characters in last name');
-    if(order.phone < 0 || order.phone.length < 7) return alert('Wrong phone number');
+    if(order.phone < 0 || order.phone.length < 6 || order.phone.length > 13 ) return alert('Wrong phone number');
 
-    if((order.firstName.length > 2) && (order.lastName.length > 2) && order.email && (order.phone > 0 && order.phone.length > 6)) {
+    if((order.firstName.length > 2) && (order.lastName.length > 2) && order.email && (order.phone > 0 && order.phone.length > 5 && order.phone.length < 14)) {
       const today = new Date();
       order.orderItems = orderItems;
       order.orderDate = today;
