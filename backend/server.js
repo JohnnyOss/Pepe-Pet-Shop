@@ -31,7 +31,7 @@ app.use('*', (req, res) => {
 });
 
 /* MONGOOSE */
-mongoose.connect('mongodb://localhost:27017/PepesPetShop', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(`mongodb+srv://${process.env.userApp}:${process.env.passwordApp}@cluster0.0a7ql.mongodb.net/PepesPetShop?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.once('open', () => {
   console.log('Successfully connected to the database');
