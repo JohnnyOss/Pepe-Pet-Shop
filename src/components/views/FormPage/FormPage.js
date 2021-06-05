@@ -54,9 +54,21 @@ class Component extends React.Component {
     const cartContent = JSON.parse(localStorage.getItem('cartItem'));
     const orderItems = cartContent;
 
+    const emailPattern = new RegExp('^[a-zA-Z0-9][a-zA-Z0-9_.-]+@[a-zA-Z0-9][a-zA-Z0-9_.-]+.{1,3}[a-zA-Z]{2,4}');
+    const phonePattern = new RegExp('[0-9]{6,13}');
+    const emailMatched = (order.email.match(emailPattern) || []).join('');
+    const phoneMatched = (order.phone.match(phonePattern) || []).join('');
+
+    if(emailMatched.length < order.email.length) {
+      return alert('Wrong email!');
+    }
+
+    if(phoneMatched.length < order.phone.length) {
+      return alert('Wrong phone!');
+    }
+
     if(order.firstName.length < 3) return alert('Min. 3 characters in first name');
     if(order.lastName.length < 3) return alert('Min. 3 characters in last name');
-    if(order.phone < 0 || order.phone.length < 6 || order.phone.length > 13 ) return alert('Wrong phone number');
 
     if((order.firstName.length > 2) && (order.lastName.length > 2) && order.email && (order.phone > 0 && order.phone.length > 5 && order.phone.length < 14)) {
       const today = new Date();
@@ -140,7 +152,6 @@ class Component extends React.Component {
                   <Grid className={styles.formItem}>
                     <TextField
                       required
-                      type="number"
                       name="phone"
                       id="phone"
                       label="Phone number"

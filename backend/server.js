@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const productsRoutes = require('./routes/products.routes');
 const ordersRoutes = require('./routes/orders.routes');
 const categoriesRoutes = require('./routes/categories.routes');
+const helmet = require('helmet');
 
 const app = express();
 
@@ -13,6 +14,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(helmet());
 
 /* API ENDPOINTS */
 app.use('/api', productsRoutes);

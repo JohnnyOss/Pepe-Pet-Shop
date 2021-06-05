@@ -1,4 +1,5 @@
 import Axios from 'axios';
+import { API_URL } from '../config';
 
 /* selectors */
 export const getOrder = ({orders}) => orders.data;
@@ -26,7 +27,7 @@ export const fetchNewOrder = (order) => {
     dispatch(fetchStarted());
 
     Axios
-      .post('http://localhost:8000/api/orders', order)
+      .post(`${API_URL}/orders`, order)
       .then(res => {
         dispatch(saveOrder(order));
       })

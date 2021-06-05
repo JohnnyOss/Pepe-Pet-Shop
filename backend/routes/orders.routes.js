@@ -31,7 +31,6 @@ router.get('/orders/:id', async (req, res) => {
 router.post('/orders', async (req, res) => {
   try {
     const { orderItems, firstName, lastName, email, phone, orderDate, totalPrice } = req.body;
-    console.log('req.body', req.body);
 
     const emailPattern = new RegExp('^[a-zA-Z0-9][a-zA-Z0-9_.-]+@[a-zA-Z0-9][a-zA-Z0-9_.-]+.{1,3}[a-zA-Z]{2,4}');
     const phonePattern = new RegExp('[0-9]{6,13}');
