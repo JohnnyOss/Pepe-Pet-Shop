@@ -9,10 +9,10 @@ import { Link } from 'react-router-dom';
 
 import styles from './ProductBox.module.scss';
 
-const Component = ({ image, name, price, link, title }) => (
+const Component = ({ image, price, link, title }) => (
   <div className={styles.box}>
     <div className={styles.imageBox}>
-      <img src={image} title={name} alt={name} className={styles.image}></img>
+      <img src={image} title={title} alt={title} className={styles.image}></img>
     </div>
     <div className={styles.details}>
       <Link to={link} className={styles.link}>
@@ -25,7 +25,6 @@ const Component = ({ image, name, price, link, title }) => (
 );
 
 Component.propTypes = {
-  name: PropTypes.string,
   image: PropTypes.string,
   price: PropTypes.number,
   link: PropTypes.string,
