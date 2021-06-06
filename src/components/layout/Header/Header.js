@@ -22,7 +22,7 @@ const Component = ({className, categories}) => {
       <div className={styles.container}>
         <div className={styles.logo}>
           <Link to={'/'}>
-            <img src="/images/logo.png" alt='Logo' title='Pepes Pet Shop' />
+            <img src="/images/Logo.png" alt='Logo' title='Pepes Pet Shop' />
           </Link>
         </div>
         <div className={styles.navigation}>
