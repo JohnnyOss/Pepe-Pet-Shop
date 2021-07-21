@@ -5,6 +5,19 @@
   margin: 10px;
   min-width: 250px;
   border: 2px solid #1e2935;
+  transition: $transition;
+
+  &:hover {
+    box-shadow: $color-main 0px 0px 25px 7px;
+  }
+
+  &:hover .product_title {
+    transform: scale(1.15);
+  }
+
+  .link {
+    text-decoration: none;
+  }
 
   .imageBox {
     border-bottom: 2px solid #1e2935;
@@ -23,18 +36,12 @@
     color: $color-text-light;
     background-color: $color-main;
 
-    .link {
+    .product_title {
       margin: auto;
-      text-decoration: none;
       transition: $transition;
-      color: inherit;
-
-      &:hover {
-        transform: scale(1.15);
-      }
     }
 
-    span {
+    .product_price {
       border-left: 2px solid #1e2935;
       padding: 10px;
     }

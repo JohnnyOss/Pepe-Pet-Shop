@@ -17,6 +17,11 @@
       min-width: 250px;
       position: relative;
 
+      &:hover .category_name {
+        background-color: $color-background-color;
+        color: $color-main;
+      }
+
       &:after {
         position: absolute;
         content: ' ';
@@ -38,7 +43,7 @@
         height: 100%;
       }
 
-      .link {
+      .category_name {
         position: absolute;
         top: 80%;
         left: 50%;
@@ -53,11 +58,6 @@
         background-color: rgba(239, 41, 64, 0.8);
         z-index: 10;
         transition: $transition;
-
-        &:hover {
-          background-color: $color-background-color;
-          color: $color-main;
-        }
       }
     }
   }

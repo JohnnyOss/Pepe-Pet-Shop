@@ -25,12 +25,12 @@ class Component extends React.Component {
           <h2 className={styles.header}>Categories of our products</h2>
           <div className={styles.categories}>
             {categories.map((category, index) => (
-              <div key={index} className={styles.box}>
+              <Link to={`/products/${category.name}`} key={index} className={styles.box}>
                 <img src={`../${category.image}`} title={category.name} alt={category.name} className={styles.image}></img>
-                <Link to={`/products/${category.name}`} className={styles.link}>
+                <span className={styles.category_name}>
                   {category.name}
-                </Link>
-              </div>
+                </span>
+              </Link>
             ))}
           </div>
         </Card>

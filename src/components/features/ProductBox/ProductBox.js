@@ -11,15 +11,15 @@ import styles from './ProductBox.module.scss';
 
 const Component = ({ image, price, link, title }) => (
   <div className={styles.box}>
-    <div className={styles.imageBox}>
-      <img src={image} title={title} alt={title} className={styles.image}></img>
-    </div>
-    <div className={styles.details}>
-      <Link to={link} className={styles.link}>
-        {title}
-      </Link>
-      <span>{price}$</span>
-    </div>
+    <Link to={link} className={styles.link}>
+      <div className={styles.imageBox}>
+        <img src={image} title={title} alt={title} className={styles.image}></img>
+      </div>
+      <div className={styles.details}>
+        <span className={styles.product_title}>{title}</span>
+        <span className={styles.product_price}>{price}$</span>
+      </div>
+    </Link>
   </div>
 
 );
